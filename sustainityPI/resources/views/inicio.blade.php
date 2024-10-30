@@ -17,7 +17,7 @@
     </div>
     <nav class="navbar-center nav-links">
         <a href="#trailer">Trailer</a>
-        <a href="#donativos">Donativos</a>
+        <a href="/donar">Donativos</a>
         <a href="#nosotros">Nosotros</a>
     </nav>
     <div class="navbar-right auth-buttons">
