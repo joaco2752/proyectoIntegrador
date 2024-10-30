@@ -6,13 +6,13 @@
     <title>Diseño con Transiciones</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     @vite(['resources/css/inicio.css'])
-    <script src="js/script.js"></script>
 </head>
 <body>
 <header class="navbar">
     <div class="navbar-left">
         <a href="#">
             <img src="img/DevPlay logo.png" alt="Logo" class="logo-image">
+            <img src="img/logo.png" alt="Sustainity" class="small-logo">
         </a>
     </div>
     <nav class="navbar-center nav-links">

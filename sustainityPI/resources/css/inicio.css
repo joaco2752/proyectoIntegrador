@@ -24,12 +24,19 @@ body {
 .navbar-left a {
     display: flex;
     align-items: center;
+    gap: 10px; /* Espacio entre los dos logos */
 }
 
 .logo-image {
-    height: 60px; /* Ajusta la altura según prefieras */
-    width: auto; /* Deja que la anchura sea automática para mantener la proporción */
+    height: 60px; /* Ajusta el tamaño del logo DevPlay */
+    width: auto;
 }
+
+.small-logo {
+    height: 100px; /* Tamaño reducido del logo Sustainity */
+    width:auto;
+}
+
 
 .navbar-center {
     display: flex;
@@ -85,15 +92,15 @@ body {
     color: #fff;
     border: 2px solid #ffa500;
 }
-.main-card, .trailer-card {
-    width: 90%;
+.main-card, .trailer-card{
+    width: 100%;
     max-width: 1600px;
     height: 500px;
     border-radius: 20px;
     display: flex;
     align-items: center;
     padding: 50px;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2)), url('../images/fondo.webp');
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2)), url('/public/img/fondo.webp');
     background-size: cover;
     background-position: center;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
@@ -104,6 +111,7 @@ body {
     margin-top: 90px;
 }
 
+
 .text-content{
     max-width: 50%;
     z-index: 1;
@@ -112,12 +120,12 @@ body {
 .text-content-left {
     max-width: 50%;
     z-index: 1;
-    text-align: right;
+    text-align: center;
 }
 .text-content-left {
     order: 1;
     
-    padding-right: 40px; /* Aumentado para más espacio */
+    padding-right: right; /* Aumentado para más espacio */
 }
 
 .video-content {
