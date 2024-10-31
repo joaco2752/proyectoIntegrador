@@ -255,3 +255,67 @@ p {
 .footer-content a:hover {
     color: #ff5722;
 }
+
+.donation-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 300px;
+}
+.donation-form input,
+.donation-form select {
+    padding: 10px;
+    font-size: 0.8em;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: 2px solid #ffcb05;
+    border-radius: 5px;
+    font-family: 'Press Start 2P', cursive;
+}
+.donation-form input::placeholder,
+.donation-form select {
+    color: rgba(255, 255, 255, 0.7);
+}
+.donation-form select option {
+    background-color: #1a1a1a;
+}
+.donation-form label {
+    font-size: 0.8em;
+    color: #ffcb05;
+}
+.play-btn {
+    margin-top: 10px;
+}
+.payment-buttons {
+    display: none;
+}
+.payment-buttons.active {
+    display: block;
+}
+.payment-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 0.8em;
+    text-align: center;
+    background-color: #ffcb05;
+    color: #1a1a1a;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Press Start 2P', cursive;
+}
+.payment-button:hover {
+    background-color: #ffd700;
+}
+.alert {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    position: fixed;
+    top: 80px;
+    z-index: 1001;
+}
