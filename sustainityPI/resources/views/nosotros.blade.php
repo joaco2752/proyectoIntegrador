@@ -9,6 +9,6 @@
 <body>
     <h1>Acerca de Nosotros</h1>
     <p>Información sobre el proyecto Sustainity.</p>
-    <a href="{{ route('inicio') }}" class="btn">Volver a Inicio</a>
+    <a href="{{ route('rutaInicio')}}" class="btn">Volver a Inicio</a>
 </body>
 </html>
