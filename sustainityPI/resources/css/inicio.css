@@ -94,7 +94,7 @@ body {
 }
 .main-card, .trailer-card{
     width: 100%;
-    max-width: 1600px;
+    max-width: 1300px;
     height: 500px;
     border-radius: 20px;
     display: flex;
@@ -176,7 +176,7 @@ p {
     width: 500px;
     height: auto;
     z-index: 2;
-    transform: rotate(-10deg);
+    transform: rotate(10deg);
     image-rendering: pixelated;
 }
 
