@@ -18,7 +18,7 @@
     <nav class="navbar-center nav-links">
         <a href="#trailer">Trailer</a>
         <a href="/donar">Donativos</a>
-        <a href="#nosotros">Nosotros</a>
+        <a href="/info">Nosotros</a>
     </nav>
     <div class="navbar-right auth-buttons">
         <button class="login-btn">Iniciar Sesión</button>
