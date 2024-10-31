@@ -38,7 +38,7 @@
 </div>
 
 <div class="card-section">
-    <h2>Master 4 Base Hero Classes</h2>
+    <h2>¡Conoce a nuestros personajes!</h2>
     <p>Start playing Sustainity with unique hero decks, each with special abilities.</p>
     <div class="card-container">
         <div class="card appear-from-bottom delay-1">
