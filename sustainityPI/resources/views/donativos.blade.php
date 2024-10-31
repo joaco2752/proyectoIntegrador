@@ -21,7 +21,7 @@
             </a>
         </div>
         <div class="navbar-center">
-            <a href="#">Home</a>
+            <a href="{{ route('rutaInicio')}}">Home</a>
             <a href="#">About</a>
             <a href="#">Play</a>
         </div>
