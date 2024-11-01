@@ -6,28 +6,43 @@
     <title>Donate to Sustainity</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     @vite(['resources/css/inicio.css'])
+    @vite('resources/js/script.js')
 </head>
 <body>
-    <nav class="navbar">
+    <nav class="navbar" >
 @if (session('message'))
-    <div class="alert">
+<div id="alerta_tiempo" class="alert" style="width: 100%; padding: 15px 0; position: fixed; top: 80px; left: 0; z-index: 1000;">
         {{ session('message') }}
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const alertMessage = document.getElementById("alerta_tiempo");
+        if (alertMessage) {
+            setTimeout(() => {
+                alertMessage.style.display = "none";
+            }, 5000); 
+        }
+    });
+</script>
+
     </div>
 @endif
         <div class="navbar-left">
             <a href="#">
                 <img src="img/DevPlay logo.png" alt="DevPlay Logo" class="logo-image">
-                <img src="img/logo.png" alt="Sustainity Logo" class="small-logo">
+            
             </a>
         </div>
         <div class="navbar-center">
-            <a href="{{ route('rutaInicio')}}">Home</a>
-            <a href="#">About</a>
-            <a href="#">Play</a>
+            <a href="{{ route('rutaInicio')}}">Inicio</a>
+            <a href="/inicio">Trailer</a>
+            <a href="{{ route('rutaNosotros')}}">Nosotros</a>
+
+ 
         </div>
         <div class="navbar-right">
-            <button class="login-btn">Login</button>
-            <button class="news-btn">News</button>
+            <button class="login-btn">Iniciar Sesión</button>
+            <button class="news-btn">Noticias</button>
         </div>
     </nav>
 
@@ -38,16 +53,19 @@
             <form action="/enviarDonativo" method="POST" class="donation-form">
                 @csrf
                 <label for="name">Nombre</label>
-                <input type="text" id="name" name="name" placeholder="Tu Nombre" required>
+                <input type="text" id="name" name="name" placeholder="Tu Nombre">
+                <small>{{ $errors->first('name')}}</small>
                 
                 <label for="email">Correo</label>
-                <input type="email" id="email" name="email" placeholder="Tu Correo" required>
+                <input type="text" id="email" name="email" placeholder="Tu Correo">
+                <small>{{ $errors->first('email')}}</small>
                 
                 <label for="amount">Cantidad a Donar ($):</label>
-                <input type="number" id="amount" name="amount" placeholder="Cantidad" required>
+                <input type="text" id="amount" name="amount" placeholder="Cantidad">
+                <small>{{ $errors->first('amount')}}</small>
                 
                 <label for="payment_method">Metodo de Pago</label>
-                <select id="payment_method" name="payment_method" required>
+                <select id="payment_method" name="payment_method">
                     <option value="">Selecciona tu metodo de pago</option>
                     <option value="credit_card">Credit Card</option>
                     <option value="paypal">PayPal</option>

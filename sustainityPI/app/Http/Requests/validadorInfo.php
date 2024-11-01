@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class validadorDonativo extends FormRequest
+class validadorInfo extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,9 +22,7 @@ class validadorDonativo extends FormRequest
     public function rules(): array
     {
         return [
-                'name' => 'required',
-                'email' => 'email:dns:rfc',
-                'amount' => 'required|numeric|min:1'
+            'email' => 'email:rfc:dns'
         ];
     }
 }

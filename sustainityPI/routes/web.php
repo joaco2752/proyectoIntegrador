@@ -24,3 +24,9 @@ Route::get('/Iniciar Sesión', function () {
 Route::get('/enviarDonativo', [ControladorVistas::class, 'donativos'])->name('enviarDonativo');
 
 Route::post('/enviarDonativo', [ControladorVistas::class, 'process'])->name('rutaDonar');
+
+Route::get('/enviarInfo', function () {
+    return view('nosotros');
+})->name('rutaInfo');
+
+Route::post('/enviarInfo', [ControladorVistas::class, 'procesoInfo'])->name('rutaInfo');

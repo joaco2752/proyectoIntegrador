@@ -18,9 +18,9 @@
         </a>
     </div>
     <nav class="navbar-center nav-links">
-        <a href="#trailer">Trailer</a>
+        <a href="/inicio">Trailer</a>
         <a href="/donar">Donativos</a>
-        <a href="/info">Nosotros</a>
+        <a href="{{ route('rutaNosotros')}}">Nosotros</a>
     </nav>
     <div class="navbar-right auth-buttons">
         <button class="login-btn" onclick="window.location.href='{{ route('rutaLogin') }}'">Iniciar Sesión</button>
@@ -34,7 +34,7 @@
         <p>Una aventura inolvidable te espera en un mundo de píxeles. Explora, lucha y descubre los secretos de esta tierra mística.</p>
         <button class="play-btn">Descargar Demo</button>
     </div>
-    <img src="{{ asset('img/Descargaaaa.png') }}" alt="Personaje" class="character-image">
+    <img src="{{ asset('img/Daryl_fondo.png') }}" alt="Personaje" class="character-image">
 </div>
 
 <div class="card-section">
@@ -42,7 +42,7 @@
     <p>Start playing Sustainity with unique hero decks, each with special abilities.</p>
     <div class="card-container">
         <div class="card appear-from-bottom delay-1">
-            <img src="{{ asset('img/card1.png') }}" alt="Card 1">
+            <img src="{{ asset('img/enemigo_cañon.png') }}" alt="Card 1">
         </div>
         <div class="card appear-from-bottom delay-2">
             <img src="{{ asset('img/card2.png') }}" alt="Card 2">
