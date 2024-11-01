@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\validadorDonativo;
+use App\Http\Requests\validadorInfo;
 use Illuminate\Http\Request;
 
 class ControladorVistas extends Controller
@@ -26,7 +27,12 @@ class ControladorVistas extends Controller
 
     public function process(validadorDonativo $request)
     {
-        return to_route('rutaDonar')->with('message', 'Gracias por tu donativo $' . $request->amount . '!');
+        return to_route('rutaDonar')->with('message', 'Gracias por tu donación de $' . $request->amount . '!');
+    }
+
+    public function procesoInfo(validadorInfo $request)
+    {
+        return to_route('rutaInfo')->with('message', 'Te mandaremos más información a tu correo: ' . $request->email . '!');
     }
 }
 

@@ -6,6 +6,7 @@
     <title>Donate to Sustainity</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     @vite(['resources/css/inicio.css'])
+    @vite('resources/js/script.js')
 </head>
 <body>
     <nav class="navbar" >
