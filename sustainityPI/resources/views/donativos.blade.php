@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Donate to Sustainity</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    @vite(['resources/css/inicio.css'])
+    @vite(['resources/css/donativos.css'])
     @vite('resources/js/script.js')
 </head>
 <body>
