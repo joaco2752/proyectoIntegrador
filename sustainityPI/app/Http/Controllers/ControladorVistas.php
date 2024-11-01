@@ -36,14 +36,9 @@ class ControladorVistas extends Controller
     }
 
     public function crearCuenta(validadorCrear $request)
-{
-    User::create([
-        'correo' => $request->correo,
-        'contraseña' => bcrypt($request->contraseña),
-    ]);
-
+    {
     return to_route('rutaExito')->with('message', 'Cuenta creada exitosamente.');
-}
+    }
 
 }
 
