@@ -12,7 +12,7 @@
     <div class="main-card">
         <div class="text-content">
             <h1>Crea tu Cuenta</h1>
-            <form action="/enviarDonativo" method="POST" class="donation-form">
+            <form action="/CrearCuenta" method="POST" class="donation-form">
                 @csrf
                 <label for="correo">Correo Electrónico</label>
                 <input type="text" id="correo" name="correo" placeholder="Tu Correo">

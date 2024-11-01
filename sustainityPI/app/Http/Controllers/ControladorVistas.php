@@ -25,6 +25,11 @@ class ControladorVistas extends Controller
         return view('nosotros');
     }
 
+    public function crearCuenta()
+    {
+        return view('CrearCuenta');
+    }
+
     public function process(validadorDonativo $request)
     {
         return to_route('rutaDonar')->with('message', 'Gracias por tu donación de $' . $request->amount . '!');
@@ -35,9 +40,9 @@ class ControladorVistas extends Controller
         return to_route('rutaInfo')->with('message', 'Te mandaremos más información a tu correo: ' . $request->email . '!');
     }
 
-    public function crearCuenta(validadorCrear $request)
+    public function creartuCuenta(validadorCrear $request)
     {
-    return to_route('rutaExito')->with('message', 'Cuenta creada exitosamente.');
+    return to_route('rutaCrearCuenta')->with('message', 'Cuenta creada exitosamente.');
     }
 
 }
