@@ -22,6 +22,7 @@
                 
                 <button type="submit" class="play-btn" name="btnDonar">Iniciar Sesión</button>
             </form>
+            <p><a href="{{ route('rutaCrear') }}" class="create-account-link">¿No tienes cuenta?</a></p>
         </div>
         <img src="{{ asset('img/character.png') }}" alt="Game Character" class="character-image">
     </div>

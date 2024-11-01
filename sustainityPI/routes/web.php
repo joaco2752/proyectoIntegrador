@@ -21,6 +21,12 @@ Route::get('/Iniciar Sesión', function () {
     return view('Login');
 })->name('rutaLogin');
 
+Route::get('/CrearCuenta', function () {
+    return view('CrearCuenta');
+})->name('rutaCrear');
+
+Route::post('/crear-cuenta', [ControladorVistas::class, 'crearCuenta'])->name('rutaCrearCuenta');
+
 Route::get('/enviarDonativo', [ControladorVistas::class, 'donativos'])->name('enviarDonativo');
 
 Route::post('/enviarDonativo', [ControladorVistas::class, 'process'])->name('rutaDonar');
