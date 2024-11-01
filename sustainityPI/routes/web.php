@@ -25,6 +25,10 @@ Route::get('/CrearCuenta', function () {
     return view('CrearCuenta');
 })->name('rutaCrear');
 
+Route::get('/Noti', function () {
+    return view('Noticias');
+})->name('rutaNoticias');
+
 Route::post('/crear-cuenta', [ControladorVistas::class, 'crearCuenta'])->name('rutaCrearCuenta');
 
 Route::get('/enviarDonativo', [ControladorVistas::class, 'donativos'])->name('enviarDonativo');
