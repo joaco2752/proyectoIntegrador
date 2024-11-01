@@ -34,14 +34,14 @@
             </a>
         </div>
         <div class="navbar-center">
-            <a href="{{ route('rutaInicio')}}">Inicio</a>
-            <a href="/inicio">Trailer</a>
+        <a href="{{ route('rutaInicio') }}">Inicio</a>
+        <a href="/donar">Donativos</a>
             <a href="{{ route('rutaNosotros')}}">Nosotros</a>
 
  
         </div>
         <div class="navbar-right">
-            <button class="login-btn">Iniciar Sesión</button>
+        <button class="login-btn" onclick="window.location.href='{{ route('rutaLogin') }}'">Iniciar Sesión</button>
             <button class="news-btn">Noticias</button>
         </div>
     </nav>

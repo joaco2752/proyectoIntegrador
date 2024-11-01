@@ -29,21 +29,20 @@
     </div>
 @endif
 
-        <div class="navbar-left">
-            <a href="#">
-                <img src="{{ asset('img/DevPlay logo.png') }}" alt="DevPlay Logo" class="logo-image">
-                <img src="{{ asset('img/logo.png') }}" alt="Sustainity Logo" class="small-logo">
-            </a>
-        </div>
-        <div class="navbar-center nav-links">
-            <a href="{{ route('rutaInicio') }}">Home</a>
-            <a href="#">About</a>
-            <a href="#">Play</a>
-        </div>
-        <div class="navbar-right auth-buttons">
-            <button class="login-btn">Login</button>
-            <button class="news-btn">News</button>
-        </div>
+<div class="navbar-left">
+        <a href="#">
+            <img src="{{ asset('img/DevPlay logo.png') }}" alt="Logo" class="logo-image">
+        </a>
+    </div>
+    <nav class="navbar-center nav-links">
+    <a href="{{ route('rutaInicio') }}">Inicio</a>
+        <a href="/donar">Donativos</a>
+        <a href="{{ route('rutaNosotros')}}">Nosotros</a>
+    </nav>
+    <div class="navbar-right auth-buttons">
+        <button class="login-btn" onclick="window.location.href='{{ route('rutaLogin') }}'">Iniciar Sesión</button>
+        <button class="news-btn">Noticias</button>
+    </div>
     </nav>
 
     <div class="main-card">
