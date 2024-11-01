@@ -9,6 +9,17 @@
 </head>
 <body>
 
+    <header class="navbar">
+        <div class="navbar-left">
+            <a href="#">
+                <img src="{{ asset('img/DevPlay logo.png') }}" alt="Logo" class="logo-image">
+            </a>
+        </div>
+        <nav class="navbar-center nav-links">
+        <a href="{{ route('rutaInicio') }}">Inicio</a>
+        </nav>
+    </header>
+
     <div class="main-card">
         <div class="text-content">
             <h1>Inicia Sesión</h1>
