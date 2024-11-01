@@ -21,13 +21,11 @@ Route::get('/Iniciar Sesión', function () {
     return view('Login');
 })->name('rutaLogin');
 
-
-
 Route::get('/Noti', function () {
     return view('Noticias');
 })->name('rutaNoticias');
 
-Route::get('/CrearCuenta', [ControladorVistas::class, 'CrearCuenta'])->name('enviarDonativo');
+Route::get('/CrearCuenta', [ControladorVistas::class, 'CrearCuenta'])->name('rutaCrear');
 
 Route::post('/CrearCuenta', [ControladorVistas::class, 'creartuCuenta'])->name('rutaCrearCuenta');
 

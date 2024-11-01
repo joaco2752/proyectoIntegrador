@@ -30,6 +30,11 @@ class ControladorVistas extends Controller
         return view('CrearCuenta');
     }
 
+    public function login()
+    {
+        return view('Login');
+    }
+
     public function process(validadorDonativo $request)
     {
         return to_route('rutaDonar')->with('message', 'Gracias por tu donación de $' . $request->amount . '!');
