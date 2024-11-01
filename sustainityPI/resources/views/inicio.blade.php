@@ -48,7 +48,7 @@
             <img src="{{ asset('img/card2_fondo.png') }}" alt="Card 2">
         </div>
         <div class="card appear-from-bottom delay-3">
-            <img src="{{ asset('img/card3.png') }}" alt="Card 3">
+            <img src="{{ asset('img/Mascota_fondo.png') }}" alt="Card 3" style= width:100%;>
         </div>
         <div class="card appear-from-bottom delay-4">
             <img src="{{ asset('img/card4.png') }}" alt="Card 4">
