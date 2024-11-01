@@ -8,26 +8,27 @@
     @vite(['resources/css/inicio.css'])
 </head>
 <body>
-    <nav class="navbar">
+    <nav class="navbar" >
 @if (session('message'))
-    <div class="alert">
+<div class="alert" style="width: 100%; padding: 15px 0; position: fixed; top: 80px; left: 0; z-index: 1000;">
         {{ session('message') }}
     </div>
 @endif
         <div class="navbar-left">
             <a href="#">
                 <img src="img/DevPlay logo.png" alt="DevPlay Logo" class="logo-image">
-                <img src="img/logo.png" alt="Sustainity Logo" class="small-logo">
+            
             </a>
         </div>
         <div class="navbar-center">
-            <a href="{{ route('rutaInicio')}}">Home</a>
-            <a href="#">About</a>
-            <a href="#">Play</a>
+            <a href="{{ route('rutaInicio')}}">Inicio</a>
+            <a href="#">Trailer</a>
+            <a href="#">Nosotros</a>
+           
         </div>
         <div class="navbar-right">
-            <button class="login-btn">Login</button>
-            <button class="news-btn">News</button>
+            <button class="login-btn">Iniciar Sesión</button>
+            <button class="news-btn">Noticias</button>
         </div>
     </nav>
 
