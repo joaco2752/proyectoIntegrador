@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\validadorCrear;
 use App\Http\Requests\validadorDonativo;
 use App\Http\Requests\validadorInfo;
 use Illuminate\Http\Request;
@@ -33,5 +34,16 @@ class ControladorVistas extends Controller
     {
         return to_route('rutaInfo')->with('message', 'Te mandaremos más información a tu correo: ' . $request->email . '!');
     }
+
+    public function crearCuenta(validadorCrear $request)
+{
+    User::create([
+        'correo' => $request->correo,
+        'contraseña' => bcrypt($request->contraseña),
+    ]);
+
+    return to_route('rutaExito')->with('message', 'Cuenta creada exitosamente.');
+}
+
 }
 
