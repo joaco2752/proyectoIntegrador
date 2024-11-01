@@ -6,6 +6,7 @@
     <title>Login Sustainity</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     @vite(['resources/css/login.css'])
+    @vite('resources/js/script.js')
 </head>
 <body>
 
@@ -20,16 +21,36 @@
         </nav>
     </header>
 
+    @if (session('message'))
+<div id="alerta_tiempo" class="alert" style="width: 100%; padding: 15px 0; position: fixed; top: 80px; left: 0; z-index: 1000;">
+        {{ session('message') }}
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const alertMessage = document.getElementById("alerta_tiempo");
+        if (alertMessage) {
+            setTimeout(() => {
+                alertMessage.style.display = "none";
+            }, 5000); 
+        }
+    });
+</script>
+
+    </div>
+@endif
+
     <div class="main-card">
         <div class="text-content">
             <h1>Inicia Sesión</h1>
-            <form action="/enviarDonativo" method="POST" class="donation-form">
+            <form action="{{ route('rutalogin') }}" method="POST" class="donation-form">
                 @csrf
                 <label for="name">Correo Electronico</label>
-                <input type="text" id="name" name="name" placeholder="Tu Correo" required>
+                <input type="text" id="correoL" name="correoL" placeholder="Correo">
+                <small class="text-danger fst-italic">{{ $errors->first('correoL') }}</small>
                 
                 <label for="email">Contraseña</label>
-                <input type="email" id="email" name="email" placeholder="Tu Contraseña" required>
+                <input type="password" id="contraseñaL" name="contraseñaL" placeholder="Contraseña">
+                <small class="text-danger fst-italic">{{ $errors->first('contraseñaL') }}</small>
                 
                 <button type="submit" class="play-btn" name="btnDonar">Iniciar Sesión</button>
             </form>

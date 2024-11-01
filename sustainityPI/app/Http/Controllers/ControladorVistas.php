@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\validadorCrear;
 use App\Http\Requests\validadorDonativo;
 use App\Http\Requests\validadorInfo;
+use App\Http\Requests\validadorLogin;
 use Illuminate\Http\Request;
 
 class ControladorVistas extends Controller
@@ -48,6 +49,11 @@ class ControladorVistas extends Controller
     public function creartuCuenta(validadorCrear $request)
     {
     return to_route('rutaCrearCuenta')->with('message', 'Cuenta creada exitosamente.');
+    }
+
+    public function inciasesion(validadorLogin $request)
+    {
+    return to_route('rutalogin')->with('message', 'Inicio de Sesion Exitoso.');
     }
 
 }
