@@ -35,14 +35,10 @@
         </div>
         <div class="navbar-center">
             <a href="{{ route('rutaInicio')}}">Inicio</a>
-<<<<<<< Updated upstream
-            <a href="#">Trailer</a>
-            <a href="{{ route('rutaNosotros')}}">Nosotros</a>
-=======
             <a href="/inicio">Trailer</a>
-            <a href="/info">Nosotros</a>
->>>>>>> Stashed changes
-           
+            <a href="{{ route('rutaNosotros')}}">Nosotros</a>
+
+ 
         </div>
         <div class="navbar-right">
             <button class="login-btn">Iniciar Sesión</button>
