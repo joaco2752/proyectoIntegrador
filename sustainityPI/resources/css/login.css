@@ -378,4 +378,11 @@ p {
     background-size: cover;
     background-position: center;
 }
+.main-card img.Parche-image, .trailer-card img.discord-image {
+    width: 50%; 
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-left: 20px;
+}
 

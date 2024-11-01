@@ -6,8 +6,19 @@
     <title>Login Sustainity</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     @vite(['resources/css/login.css'])
+    @vite('resources/js/script.js')
 </head>
 <body>
+    <header class="navbar">
+        <div class="navbar-left">
+            <a href="#">
+                <img src="{{ asset('img/DevPlay logo.png') }}" alt="Logo" class="logo-image">
+            </a>
+        </div>
+        <nav class="navbar-center nav-links">
+        <a href="{{ route('rutaInicio') }}">Inicio</a>
+        </nav>
+    </header>
 
     @if (session('message'))
 <div id="alerta_tiempo" class="alert" style="width: 100%; padding: 15px 0; position: fixed; top: 80px; left: 0; z-index: 1000;">

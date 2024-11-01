@@ -11,7 +11,7 @@
 <body>
     <nav class="navbar" >
 @if (session('message'))
-<div id="alerta_tiempo" class="alert" style="width: 100%; padding: 15px 0; position: fixed; top: 80px; left: 0; z-index: 1000;">
+<div id="alerta_tiempo" class="alert" style="width: 100%; padding: 15px 0; position: fixed; top:-50px; left: 0; z-index: 1000;">
         {{ session('message') }}
 
 <script>
