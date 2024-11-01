@@ -24,7 +24,7 @@
         <div class="navbar-center">
             <a href="{{ route('rutaInicio')}}">Inicio</a>
             <a href="#">Trailer</a>
-            <a href="#">Nosotros</a>
+            <a href="{{ route('rutaNosotros')}}">Nosotros</a>
            
         </div>
         <div class="navbar-right">

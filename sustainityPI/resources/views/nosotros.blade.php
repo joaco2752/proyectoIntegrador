@@ -51,11 +51,18 @@
                 </ol>
                 <form action="/enviarInfo" method="POST">
                     @csrf
+                    <div>
                     <label for="email">Danos tu correo para más información</label>
+                    </div>
+                    <div>
                     <input type="text" id="email" name="email" placeholder="Tu Correo">
                     <small>{{ $errors->first('email')}}</small>
+                    </div>
+                    <div>
                 <br>
+                <label for="">Ahora presiona aqui y te mandaremos la información a tu correo</label>
                 <button type="submit" class="info-btn">Solicita más información</button>
+                </div>
                 </form>
             </div>
         </div>
