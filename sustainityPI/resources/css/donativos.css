@@ -100,7 +100,7 @@ body {
     display: flex;
     align-items: center;
     padding: 50px;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2)), url('/public/img/fondo3.webp');
+    background-image: linear-gradient(to left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url('/public/img/fondo3.webp');
     background-size: cover;
     background-position: center;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
@@ -171,12 +171,12 @@ p {
 
 .character-image {
     position: absolute;
-    right: -80px;
-    top: -150px;
+    right: 80px;
+    top: 10px;
     width: 500px;
     height: auto;
     z-index: 2;
-    transform: rotate(10deg);
+    transform: rotate(0deg);
     image-rendering: pixelated;
 }
 

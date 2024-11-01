@@ -11,7 +11,7 @@
 <body>
     <nav class="navbar" >
 @if (session('message'))
-<div id="alerta_tiempo" class="alert" style="width: 100%; padding: 15px 0; position: fixed; top:-50px; left: 0; z-index: 1000;">
+<div id="alerta_tiempo" class="alert" style="width: 100%; padding: 15px 0; position: fixed; top: 80px; left: 0; z-index: 1000;">
         {{ session('message') }}
 
 <script>
@@ -75,7 +75,7 @@
                 <button type="submit" class="play-btn" name="btnDonar">Haz tu donación</button>
             </form>
         </div>
-        <img src="{{ asset('img/character.png') }}" alt="Game Character" class="character-image">
+        <img src="{{ asset('img/donativos_fondo.png') }}" alt="Personaje" class="character-image">
     </div>
 
     <footer class="footer">
