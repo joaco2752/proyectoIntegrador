@@ -6,6 +6,7 @@
     <title>Donate to Sustainity</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     @vite(['resources/css/inicio.css'])
+    @vite('resources/js/script.js')
 </head>
 <body>
     <nav class="navbar">
@@ -20,12 +21,12 @@
                 <img src="img/logo.png" alt="Sustainity Logo" class="small-logo">
             </a>
         </div>
-        <div class="navbar-center">
+        <div class="navbar-center nav-links">
             <a href="{{ route('rutaInicio')}}">Home</a>
             <a href="#">About</a>
             <a href="#">Play</a>
         </div>
-        <div class="navbar-right">
+        <div class="navbar-right auth-buttons">
             <button class="login-btn">Login</button>
             <button class="news-btn">News</button>
         </div>
