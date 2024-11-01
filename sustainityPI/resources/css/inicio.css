@@ -348,3 +348,17 @@ p {
     width: 700px;
 }
 
+.main-card img.Parche-image {
+    width: 40%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-left: 50px;
+}
+.trailer-card img.discord-image {
+    width: 75%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-left: -60px;
+}

@@ -24,7 +24,7 @@
     </nav>
     <div class="navbar-right auth-buttons">
         <button class="login-btn" onclick="window.location.href='{{ route('rutaLogin') }}'">Iniciar Sesión</button>
-        <button class="news-btn">Noticias</button>
+        <button class="news-btn" onclick="window.location.href='{{ route('rutaNoticias') }}'">Noticias</button>
     </div>
 </header>
 
@@ -32,7 +32,6 @@
     <div class="text-content">
         <h1>SUSTAINITY</h1>
         <p>Una aventura inolvidable te espera en un mundo de píxeles. Explora, lucha y descubre los secretos de esta tierra mística.</p>
-        <button class="play-btn">Descargar Demo</button>
     </div>
     <img src="{{ asset('img/Daryl_fondo.png') }}" alt="Personaje" class="character-image">
 </div>
