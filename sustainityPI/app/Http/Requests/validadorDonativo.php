@@ -22,6 +22,8 @@ class validadorDonativo extends FormRequest
     public function rules(): array
     {
         return [
+                'name' => 'required',
+                'email' => 'email:dns:rfc',
                 'amount' => 'required|numeric|min:1'
         ];
     }

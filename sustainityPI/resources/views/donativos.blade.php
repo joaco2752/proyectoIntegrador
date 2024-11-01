@@ -39,16 +39,19 @@
             <form action="/enviarDonativo" method="POST" class="donation-form">
                 @csrf
                 <label for="name">Nombre</label>
-                <input type="text" id="name" name="name" placeholder="Tu Nombre" required>
+                <input type="text" id="name" name="name" placeholder="Tu Nombre">
+                <small>{{ $errors->first('name')}}</small>
                 
                 <label for="email">Correo</label>
-                <input type="email" id="email" name="email" placeholder="Tu Correo" required>
+                <input type="text" id="email" name="email" placeholder="Tu Correo">
+                <small>{{ $errors->first('email')}}</small>
                 
                 <label for="amount">Cantidad a Donar ($):</label>
-                <input type="number" id="amount" name="amount" placeholder="Cantidad" required>
+                <input type="text" id="amount" name="amount" placeholder="Cantidad">
+                <small>{{ $errors->first('amount')}}</small>
                 
                 <label for="payment_method">Metodo de Pago</label>
-                <select id="payment_method" name="payment_method" required>
+                <select id="payment_method" name="payment_method">
                     <option value="">Selecciona tu metodo de pago</option>
                     <option value="credit_card">Credit Card</option>
                     <option value="paypal">PayPal</option>
