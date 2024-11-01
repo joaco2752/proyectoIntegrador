@@ -45,7 +45,7 @@
             <img src="{{ asset('img/enemigo_cañon.png') }}" alt="Card 1">
         </div>
         <div class="card appear-from-bottom delay-2">
-            <img src="{{ asset('img/card2.png') }}" alt="Card 2">
+            <img src="{{ asset('img/card2_fondo.png') }}" alt="Card 2">
         </div>
         <div class="card appear-from-bottom delay-3">
             <img src="{{ asset('img/card3.png') }}" alt="Card 3">
