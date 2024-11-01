@@ -377,6 +377,7 @@ p {
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.3)), url('/public/img/fondo.webp');
     background-size: cover;
     background-position: center;
+    margin-top: 90px;
 }
 .main-card img.Parche-image, .trailer-card img.discord-image {
     width: 50%; 

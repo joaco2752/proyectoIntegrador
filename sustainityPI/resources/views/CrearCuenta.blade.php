@@ -9,16 +9,22 @@
     @vite('resources/js/script.js')
 </head>
 <body>
-    <header class="navbar">
-        <div class="navbar-left">
-            <a href="#">
-                <img src="{{ asset('img/DevPlay logo.png') }}" alt="Logo" class="logo-image">
-            </a>
-        </div>
-        <nav class="navbar-center nav-links">
-        <a href="{{ route('rutaInicio') }}">Inicio</a>
-        </nav>
-    </header>
+<header class="navbar">
+    <div class="navbar-left">
+        <a href="#">
+            <img src="{{ asset('img/DevPlay logo.png') }}" alt="Logo" class="logo-image">
+        </a>
+    </div>
+    <nav class="navbar-center nav-links">
+    <a href="{{ route('rutaInicio') }}">Inicio</a>
+        <a href="/donar">Donativos</a>
+        <a href="{{ route('rutaNosotros')}}">Nosotros</a>
+    </nav>
+    <div class="navbar-right auth-buttons">
+        <button class="login-btn" onclick="window.location.href='{{ route('rutaLogin') }}'">Iniciar Sesión</button>
+        <button class="news-btn" onclick="window.location.href='{{ route('rutaNoticias') }}'">Noticias</button>
+    </div>
+</header>
 
     @if (session('message'))
 <div id="alerta_tiempo" class="alert" style="width: 100%; padding: 15px 0; position: fixed; top: 80px; left: 0; z-index: 1000;">
