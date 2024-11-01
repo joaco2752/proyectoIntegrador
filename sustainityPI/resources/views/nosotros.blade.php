@@ -52,7 +52,8 @@
                 <form action="/enviarInfo" method="POST">
                     @csrf
                     <label for="email">Danos tu correo para más información</label>
-                    <input type="email" id="email" name="email" placeholder="Tu Correo" required>
+                    <input type="text" id="email" name="email" placeholder="Tu Correo">
+                    <small>{{ $errors->first('email')}}</small>
                 <br>
                 <button type="submit" class="info-btn">Solicita más información</button>
                 </form>
