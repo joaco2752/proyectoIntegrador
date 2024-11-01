@@ -17,6 +17,10 @@ Route::get('/info', function () {
     return view('nosotros');
 })->name('rutaNosotros');
 
+Route::get('/Iniciar Sesión', function () {
+    return view('Login');
+})->name('rutaLogin');
+
 Route::get('/enviarDonativo', [ControladorVistas::class, 'donativos'])->name('enviarDonativo');
 
 Route::post('/enviarDonativo', [ControladorVistas::class, 'process'])->name('rutaDonar');

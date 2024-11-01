@@ -23,7 +23,7 @@
         <a href="/info">Nosotros</a>
     </nav>
     <div class="navbar-right auth-buttons">
-        <button class="login-btn">Iniciar Sesión</button>
+        <button class="login-btn" onclick="window.location.href='{{ route('rutaLogin') }}'">Iniciar Sesión</button>
         <button class="news-btn">Noticias</button>
     </div>
 </header>

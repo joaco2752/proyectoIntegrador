@@ -23,7 +23,6 @@ class ControladorVistas extends Controller
         return view('nosotros');
     }
 
-
     public function process(validadorDonativo $request)
     {
         return to_route('rutaDonar')->with('message', 'Thank you for your donation of $' . $request->amount . '!');
