@@ -18,7 +18,7 @@
         </a>
     </div>
     <nav class="navbar-center nav-links">
-        <a href="/inicio">Trailer</a>
+    <a href="{{ route('rutaInicio') }}">Inicio</a>
         <a href="/donar">Donativos</a>
         <a href="{{ route('rutaNosotros')}}">Nosotros</a>
     </nav>
@@ -38,7 +38,7 @@
 
 <div class="card-section">
     <h2>¡Conoce a nuestros personajes!</h2>
-    <p>Start playing Sustainity with unique hero decks, each with special abilities.</p>
+    <p>Cada uno con algo que decir y relevante para tu progreso, ¡Conocelos!</p>
     <div class="card-container">
         <div class="card appear-from-bottom delay-1">
             <img src="{{ asset('img/enemigo_cañon.png') }}" alt="Card 1">
@@ -51,17 +51,18 @@
 
         </div>
         <div class="card appear-from-bottom delay-4">
-            <img src="{{ asset('img/card4.png') }}" alt="Card 4">
+            <img src="{{ asset('img/sale_fondo.png') }}" alt="Card 4" style="width: 120%;">
         </div>
     </div>
 </div>
 
-<div class="trailer-card appear-on-load">
+<div class="trailer-card appear-on-load" style="background-image: linear-gradient(to left, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7)), url('{{ asset('img/fondo2.webp') }}');">
+
     <div class="text-content-left">
         <h1>Ver Tráiler</h1>
         <p>Sumérgete en el mundo de Sustainity y descubre los emocionantes desafíos que te esperan. Haz clic en el video para ver el tráiler oficial.</p>
     </div>
-    <div class="video-content">
+    <div class="video-content" >
         <video controls>
             <source src="{{ asset('videos/trailer.mp4') }}" type="video/mp4">
             Tu navegador no soporta el elemento de video.
