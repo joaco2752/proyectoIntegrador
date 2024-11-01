@@ -3,9 +3,13 @@ body {
     flex-direction: column;
     align-items: center;
     background-color: #1a1a1a;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     font-family: 'Press Start 2P', cursive;
     color: #fff;
 }
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -24,19 +28,18 @@ body {
 .navbar-left a {
     display: flex;
     align-items: center;
-    gap: 10px; /* Espacio entre los dos logos */
+    gap: 10px;
 }
 
 .logo-image {
-    height: 60px; /* Ajusta el tamaño del logo DevPlay */
+    height: 60px;
     width: auto;
 }
 
 .small-logo {
-    height: 100px; /* Tamaño reducido del logo Sustainity */
-    width:auto;
+    height: 100px;
+    width: auto;
 }
-
 
 .navbar-center {
     display: flex;
@@ -60,7 +63,7 @@ body {
 .navbar-right {
     display: flex;
     gap: 15px;
-    margin-right: 100px; /* Mueve más hacia la derecha */
+    margin-right: 100px;
 }
 
 .login-btn,
@@ -92,7 +95,8 @@ body {
     color: #fff;
     border: 2px solid #ffa500;
 }
-.main-card, .trailer-card{
+
+.trailer-card {
     width: 100%;
     max-width: 1300px;
     height: 500px;
@@ -111,25 +115,36 @@ body {
     margin-top: 90px;
 }
 
-
-.text-content{
-    max-width: 50%;
-    z-index: 1;
-    
+.main-card {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 40px;
+    color: #fff;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }
+
+.text-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
 .text-content-left {
     max-width: 50%;
     z-index: 1;
     text-align: center;
 }
-.text-content-left {
-    order: 1;
-    
-    padding-right: right; /* Aumentado para más espacio */
-}
 
 .video-content {
-    max-width: 60%; /* Más grande */
+    max-width: 60%;
     display: flex;
     justify-content: center;
     padding: 30px;
@@ -138,10 +153,9 @@ body {
 
 .video-content video {
     width: 100%;
-    height: 350px; /* Aumentado para mayor tamaño */
+    height: 350px;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-   
 }
 
 h1, h2 {
@@ -180,7 +194,6 @@ p {
     image-rendering: pixelated;
 }
 
-/* Animación para la aparición */
 @keyframes fadeIn {
     to {
         opacity: 1;
@@ -237,7 +250,7 @@ p {
     padding: 20px 0;
     font-family: 'Press Start 2P', cursive;
     font-size: 0.8em;
-    margin-top: 50px;
+    margin-top: 200px; 
     border-top: 2px solid #333;
 }
 
@@ -259,39 +272,64 @@ p {
 .donation-form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    max-width: 300px;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
 }
+
 .donation-form input,
 .donation-form select {
+    width: 100%;
+    max-width: 300px;
     padding: 10px;
-    font-size: 0.8em;
-    background-color: rgba(255, 255, 255, 0.1);
-    color: #fff;
+    margin-bottom: 5px;
     border: 2px solid #ffcb05;
     border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
     font-family: 'Press Start 2P', cursive;
+    text-align: center;
 }
+
 .donation-form input::placeholder,
 .donation-form select {
     color: rgba(255, 255, 255, 0.7);
 }
+
 .donation-form select option {
     background-color: #1a1a1a;
 }
+
 .donation-form label {
+    margin-top: 20px;
+    padding: 10px;
     font-size: 0.8em;
     color: #ffcb05;
 }
+
 .play-btn {
-    margin-top: 10px;
+    width: 100%;
+    max-width: 300px;
+    padding: 12px;
+    font-size: 1em;
+    background-color: #ff5722;
+    color: #fff;
+    border: none;
+    margin-top: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center;
 }
+
 .payment-buttons {
     display: none;
 }
+
 .payment-buttons.active {
     display: block;
 }
+
 .payment-button {
     display: block;
     width: 100%;
@@ -306,9 +344,11 @@ p {
     cursor: pointer;
     font-family: 'Press Start 2P', cursive;
 }
+
 .payment-button:hover {
     background-color: #ffd700;
 }
+
 .alert {
     background-color: #4CAF50;
     color: white;
@@ -319,9 +359,23 @@ p {
     top: 80px;
     z-index: 1001;
 }
+
 .main-card {
+    width: 200%;
+    max-width: 900px;
+    margin: 60px auto 80px auto;
+    height: auto;
+    margin: auto;
+    border-radius: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.858);
+    padding: 70px;
+    color: #fff;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.3)), url('/public/img/fondo.webp');
+    background-size: cover;
+    background-position: center;
 }
+
