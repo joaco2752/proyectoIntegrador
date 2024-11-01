@@ -1,0 +1,255 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #1a1a1a;
+    font-family: 'Press Start 2P', cursive;
+    color: #fff;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 5%;
+    background-color: rgba(13, 13, 13, 0.8);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    font-size: 0.8em;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.navbar-left a {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espacio entre los dos logos */
+}
+
+.logo-image {
+    height: 60px; /* Ajusta el tamaño del logo DevPlay */
+    width: auto;
+}
+
+.small-logo {
+    height: 100px; /* Tamaño reducido del logo Sustainity */
+    width:auto;
+}
+
+
+.navbar-center {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-grow: 1;
+    margin-left: 100px;
+}
+
+.navbar-center a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.navbar-center a:hover {
+    color: #ffa500;
+}
+
+.navbar-right {
+    display: flex;
+    gap: 15px;
+    margin-right: 100px; 
+}
+
+.login-btn,
+.news-btn {
+    padding: 10px 20px;
+    font-size: 0.8em;
+    background: none;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.news-btn {
+    background-color: #ffa500;
+    color: #0d0d0d;
+    border: none;
+}
+
+.login-btn:hover {
+    background-color: #fff;
+    color: #0d0d0d;
+}
+
+.news-btn:hover {
+    background: none;
+    color: #fff;
+    border: 2px solid #ffa500;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #1a1a1a;
+    font-family: 'Press Start 2P', cursive;
+    color: #fff;
+}
+.alert {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    position: fixed;
+    top: 80px;
+    z-index: 1001;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 5%;
+    background-color: rgba(13, 13, 13, 0.8);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    font-size: 0.8em;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.main-card {
+    width: 80%;
+    max-width: 900px;
+    margin-top: 120px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    background-color: rgba(0, 0, 0, 0.85);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    color: #fff;
+    animation: fadeIn 1s forwards, slideInFromLeft 1.5s ease-out;
+}
+
+.info-section,
+.game-info,
+.how-to-play-section,
+.form-section {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(34, 34, 34, 0.8);
+    animation: fadeIn 1.5s ease-out;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #ffcb05;
+    margin-bottom: 20px;
+    animation: slideInFromRight 1s ease-out;
+}
+
+h2 {
+    font-size: 2em;
+    color: #ffcb05;
+    margin-top: 40px;
+    animation: slideInFromLeft 1.5s ease-out;
+}
+
+p, ul, ol, label {
+    font-size: 1em;
+    line-height: 1.5;
+    color: #ddd;
+    animation: fadeIn 1.5s ease-out;
+}
+
+input[type="text"] {
+    width: 80%;
+    max-width: 400px;
+    padding: 12px;
+    margin-top: 10px;
+    border: 2px solid #ffcb05;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    text-align: center;
+    font-family: 'Press Start 2P', cursive;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+input[type="text"]::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+input[type="text"]:focus {
+    border-color: #ff5722;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.info-btn {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}
+
+.info-btn:hover {
+    background-color: #45a049;
+}
+
+.footer {
+    width: 100%;
+    background-color: #111;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.8em;
+    margin-top: 50px;
+    border-top: 2px solid #333;
+}
+
+.footer-content a {
+    color: #ffcb05;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+.footer-content a:hover {
+    color: #ff5722;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes slideInFromLeft {
+    0% { transform: translateX(-100%); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInFromRight {
+    0% { transform: translateX(100%); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
