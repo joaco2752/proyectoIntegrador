@@ -11,8 +11,20 @@
 <body>
     <nav class="navbar" >
 @if (session('message'))
-<div class="alert" style="width: 100%; padding: 15px 0; position: fixed; top: 80px; left: 0; z-index: 1000;">
+<div id="alerta_tiempo" class="alert" style="width: 100%; padding: 15px 0; position: fixed; top: 80px; left: 0; z-index: 1000;">
         {{ session('message') }}
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const alertMessage = document.getElementById("alerta_tiempo");
+        if (alertMessage) {
+            setTimeout(() => {
+                alertMessage.style.display = "none";
+            }, 5000); 
+        }
+    });
+</script>
+
     </div>
 @endif
         <div class="navbar-left">
@@ -23,8 +35,13 @@
         </div>
         <div class="navbar-center">
             <a href="{{ route('rutaInicio')}}">Inicio</a>
+<<<<<<< Updated upstream
             <a href="#">Trailer</a>
             <a href="{{ route('rutaNosotros')}}">Nosotros</a>
+=======
+            <a href="/inicio">Trailer</a>
+            <a href="/info">Nosotros</a>
+>>>>>>> Stashed changes
            
         </div>
         <div class="navbar-right">

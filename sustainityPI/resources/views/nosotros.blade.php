@@ -9,11 +9,31 @@
 </head>
 <body>
 <nav class="navbar">
+<<<<<<< Updated upstream
         @if (session('message'))
             <div class="alert" style="width: 100%; padding: 15px 0; position: fixed; top: 80px; left: 0; z-index: 1000;">
                 {{ session('message') }}
             </div>
         @endif
+=======
+@if (session('message'))
+<div id="alerta_tiempo" class="alert" style="width: 100%; padding: 15px 0; position: fixed; top: 80px; left: 0; z-index: 1000;">
+        {{ session('message') }}
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const alertMessage = document.getElementById("alerta_tiempo");
+        if (alertMessage) {
+            setTimeout(() => {
+                alertMessage.style.display = "none";
+            }, 5000); 
+        }
+    });
+</script>
+
+    </div>
+@endif
+>>>>>>> Stashed changes
         <div class="navbar-left">
             <a href="#">
                 <img src="{{ asset('img/DevPlay logo.png') }}" alt="DevPlay Logo" class="logo-image">

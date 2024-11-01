@@ -18,7 +18,7 @@
         </a>
     </div>
     <nav class="navbar-center nav-links">
-        <a href="#trailer">Trailer</a>
+        <a href="/inicio">Trailer</a>
         <a href="/donar">Donativos</a>
         <a href="{{ route('rutaNosotros')}}">Nosotros</a>
     </nav>
@@ -42,7 +42,7 @@
     <p>Start playing Sustainity with unique hero decks, each with special abilities.</p>
     <div class="card-container">
         <div class="card appear-from-bottom delay-1">
-            <img src="{{ asset('img/card1.png') }}" alt="Card 1">
+            <img src="{{ asset('img/enemigo_cañon.png') }}" alt="Card 1">
         </div>
         <div class="card appear-from-bottom delay-2">
             <img src="{{ asset('img/card2.png') }}" alt="Card 2">
