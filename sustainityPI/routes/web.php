@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ControladorVistas;
+use App\Http\Controllers\donativoController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -21,9 +22,9 @@ Route::get('/Noti', function () {
     return view('Noticias');
 })->name('rutaNoticias');
 
-Route::get('/Login', [ControladorVistas::class, 'Login'])->name('rutaLogin');
+Route::get('/Login', [ControladorVistas::class, 'login'])->name('rutaLogin');
 
-Route::post('/Login', [ControladorVistas::class, 'InciaSesion'])->name('rutalogin');
+Route::post('/Login', [ControladorVistas::class, 'iniciasesion'])->name('rutalogin');
 
 
 
@@ -31,12 +32,17 @@ Route::get('/CrearCuenta', [ControladorVistas::class, 'CrearCuenta'])->name('rut
 
 Route::post('/CrearCuenta', [ControladorVistas::class, 'creartuCuenta'])->name('rutaCrearCuenta');
 
-Route::get('/enviarDonativo', [ControladorVistas::class, 'donativos'])->name('enviarDonativo');
+/* Route::get('/enviarDonativo', [ControladorVistas::class, 'donativos'])->name('enviarDonativo'); */
 
-Route::post('/enviarDonativo', [ControladorVistas::class, 'process'])->name('rutaDonar');
+/* Route::post('/enviarDonativo', [ControladorVistas::class, 'process'])->name('rutaDonar'); */
 
 Route::get('/enviarInfo', function () {
     return view('nosotros');
 })->name('rutaInfo');
 
 Route::post('/enviarInfo', [ControladorVistas::class, 'procesoInfo'])->name('rutaInfo');
+
+/* Rutas para donativoController */
+Route::get('/donativos/create', [donativoController::class, 'create'])->name('enviarDonativo');
+Route::post('/donativos', [donativoController::class, 'store'])->name('rutaDonar');
+Route::get('/donativos', [donativoController::class, 'index'])->name('enviarDonativo');

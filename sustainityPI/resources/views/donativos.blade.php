@@ -50,7 +50,8 @@
         <div class="text-content">
             <h1>Apoya Sustainity</h1>
             <p>Ayudanos a hacer un mundo mejor, un juego a la vez</p>
-            <form action="/enviarDonativo" method="POST" class="donation-form">
+            
+            <form action="{{ route('rutaDonar')}}" method="POST" class="donation-form">
                 @csrf
                 <label for="name">Nombre</label>
                 <input type="text" id="name" name="name" placeholder="Tu Nombre">

@@ -51,9 +51,9 @@ class ControladorVistas extends Controller
     return to_route('rutaCrearCuenta')->with('message', 'Cuenta creada exitosamente.');
     }
 
-    public function inciasesion(validadorLogin $request)
+    public function iniciasesion(validadorLogin $request)
     {
-    return to_route('rutalogin')->with('message', 'Inicio de Sesion Exitoso.');
+    return to_route('rutaInicio')->with('message', 'Inicio de Sesion Exitoso.');
     }
 
 }

@@ -22,8 +22,8 @@ class validadorLogin extends FormRequest
     public function rules(): array
     {
         return [
-            'correoL' => 'required|email',
-            'contraseñaL' => 'required',
+            'correoL' => 'email:rfc:dns',
+            'contraseñaL' => 'required'
         ];
     }
 }
