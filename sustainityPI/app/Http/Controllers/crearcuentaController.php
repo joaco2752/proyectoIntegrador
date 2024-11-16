@@ -31,7 +31,13 @@ class crearcuentaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::table('_crear_cuenta')->insert([
+            "correo"=>$request->input('correo'),
+            "contraseña"=>$request->input('contraseña'),
+            "created_at"=>Carbon::now(),
+            "updated_at"=>Carbon::now()
+        ]);
+        return to_route('rutaDonativos')->with('message', 'Gracias por tu donación de $' . $request->amount . '!');
     }
 
     /**
