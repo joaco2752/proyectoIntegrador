@@ -28,9 +28,9 @@ Route::post('/Login', [ControladorVistas::class, 'iniciasesion'])->name('rutalog
 
 
 
-Route::get('/CrearCuenta', [ControladorVistas::class, 'CrearCuenta'])->name('rutaCrear');
+/* Route::get('/CrearCuenta', [ControladorVistas::class, 'CrearCuenta'])->name('rutaCrear');
 
-Route::post('/CrearCuenta', [ControladorVistas::class, 'creartuCuenta'])->name('rutaCrearCuenta');
+Route::post('/CrearCuenta', [ControladorVistas::class, 'creartuCuenta'])->name('rutaCrearCuenta'); */
 
 /* Route::get('/enviarDonativo', [ControladorVistas::class, 'donativos'])->name('enviarDonativo'); */
 
@@ -46,3 +46,7 @@ Route::post('/enviarInfo', [ControladorVistas::class, 'procesoInfo'])->name('rut
 Route::get('/donativos/create', [donativoController::class, 'create'])->name('enviarDonativo');
 Route::post('/donativos', [donativoController::class, 'store'])->name('rutaDonar');
 Route::get('/donativos', [donativoController::class, 'index'])->name('enviarDonativo');
+
+Route::get('/crear_cuenta/create', [crearcuentaController::class, 'create'])->name('rutaCrear');
+Route::post('/CrearCuenta', [crearcuentaController::class, 'store'])->name('rutaCrearCuenta');
+Route::get('/CrearCuenta', [crearcuentaController::class, 'index'])->name('rutaCrear');
