@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ControladorVistas;
 use App\Http\Controllers\donativoController;
+use App\Http\Controllers\crearcuentaController;
 use Illuminate\Support\Facades\Route;
 
 

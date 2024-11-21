@@ -13,7 +13,7 @@ class crearcuentaseeder extends Seeder
      */
     public function run(): void
     {
-    DB::table('crear_cuenta')->insert([[
+    DB::table('_crear_cuenta')->insert([[
             'correo'=>'Cacahuate@gmail.com',
             'contraseña'=> 'cacahuatejapones3',
         ],[
