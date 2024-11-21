@@ -29,7 +29,7 @@ class crearcuentaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(validadorCrear $request)
     {
         DB::table('_crear_cuenta')->insert([
             "correo"=>$request->input('correo'),
@@ -37,7 +37,7 @@ class crearcuentaController extends Controller
             "created_at"=>Carbon::now(),
             "updated_at"=>Carbon::now()
         ]);
-        return to_route('rutaCrear')->with('message', 'Gracias por registrarte' . $request->amount . '!');
+        return to_route('rutaInicio')->with('message', 'Gracias por registrarte' . $request->amount . '!');
     }
 
     /**

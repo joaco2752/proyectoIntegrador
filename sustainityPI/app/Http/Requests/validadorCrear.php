@@ -22,7 +22,7 @@ class validadorCrear extends FormRequest
     public function rules(): array
     {
         return [
-            'correo' => 'email:rfc:dns',
+            'correo' => 'required|email:rfc:dns',
             'contraseña' => 'required|min:8',
             'confirmar_contraseña' => 'required|same:contraseña',
         ];
