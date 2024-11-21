@@ -70,7 +70,7 @@
 
         <div class="form-section">
             <h2>Solicita Información</h2>
-            <form action="/enviarInfo" method="POST">
+            <form action="/nosotros/create" method="POST">
                 @csrf
                 <div>
                     <label for="email">Danos tu correo para más información</label>

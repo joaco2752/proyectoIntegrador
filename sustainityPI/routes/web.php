@@ -3,6 +3,7 @@
 use App\Http\Controllers\ControladorVistas;
 use App\Http\Controllers\donativoController;
 use App\Http\Controllers\crearcuentaController;
+use App\Http\Controllers\nosotrosController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -37,11 +38,11 @@ Route::post('/CrearCuenta', [ControladorVistas::class, 'creartuCuenta'])->name('
 
 /* Route::post('/enviarDonativo', [ControladorVistas::class, 'process'])->name('rutaDonar'); */
 
-Route::get('/enviarInfo', function () {
+/* Route::get('/enviarInfo', function () {
     return view('nosotros');
-})->name('rutaInfo');
+})->name('rutaInfo'); */
 
-Route::post('/enviarInfo', [ControladorVistas::class, 'procesoInfo'])->name('rutaInfo');
+/* Route::post('/enviarInfo', [ControladorVistas::class, 'procesoInfo'])->name('rutaInfo'); */
 
 /* Rutas para donativoController */
 Route::get('/donativos/create', [donativoController::class, 'create'])->name('enviarDonativo');
@@ -51,3 +52,7 @@ Route::get('/donativos', [donativoController::class, 'index'])->name('enviarDona
 Route::get('/crear_cuenta/create', [crearcuentaController::class, 'create'])->name('rutaCrear');
 Route::post('/CrearCuenta', [crearcuentaController::class, 'store'])->name('rutaCrearCuenta');
 Route::get('/CrearCuenta', [crearcuentaController::class, 'index'])->name('rutaCrear');
+
+Route::get('/nosotros/create', [nosotrosController::class, 'create'])->name('rutaInfo');
+Route::post('/nosotros', [nosotrosController::class, 'store'])->name('rutaInfo');
+Route::get('/nosotros', [nosotrosController::class, 'index'])->name('rutaInfo');
