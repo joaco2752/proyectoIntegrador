@@ -30,11 +30,11 @@
                 <small class="text-danger fst-italic">{{ $errors->first('correo') }}</small>
 
                 <label for="contraseña">Contraseña</label>
-                <input type="text" id="contraseña" name="contraseña" placeholder="Crea tu Contraseña">
+                <input type="password" id="contraseña" name="contraseña" placeholder="Crea tu Contraseña">
                 <small class="text-danger fst-italic">{{ $errors->first('contraseña') }}</small>
 
                 <label for="confirmar_contraseña">Confirmar Contraseña</label>
-                <input type="text" id="confirmar_contraseña" name="confirmar_contraseña" placeholder="Confirma tu Contraseña">
+                <input type="password" id="confirmar_contraseña" name="confirmar_contraseña" placeholder="Confirma tu Contraseña">
                 <small class="text-danger fst-italic">{{ $errors->first('confirmar_contraseña') }}</small>
                 
                 <button type="submit" class="play-btn" name="btnDonar">Crear Cuenta</button>
