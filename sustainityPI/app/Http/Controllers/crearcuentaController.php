@@ -71,4 +71,5 @@ class crearcuentaController extends Controller
     {
         //
     }
+    
 }

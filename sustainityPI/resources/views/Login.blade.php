@@ -51,11 +51,11 @@
             <form action="{{ route('rutalogin') }}" method="POST" class="donation-form">
                 @csrf
                 <label for="name">Correo Electronico</label>
-                <input type="text" id="correoL" name="correoL" placeholder="Correo">
+                <input type="text" id="correo" name="correo" placeholder="Correo">
                 <small class="text-danger fst-italic">{{ $errors->first('correoL') }}</small>
                 
                 <label for="email">Contraseña</label>
-                <input type="password" id="contraseñaL" name="contraseñaL" placeholder="Contraseña">
+                <input type="password" id="contraseña" name="contraseña" placeholder="Contraseña">
                 <small class="text-danger fst-italic">{{ $errors->first('contraseñaL') }}</small>
                 
                 <button type="submit" class="play-btn" name="btnDonar">Iniciar Sesión</button>
