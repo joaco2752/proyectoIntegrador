@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('crear_cuenta', function (Blueprint $table) {
+        Schema::create('_crear_cuenta', function (Blueprint $table) {
             $table->id();
             $table->string('correo', 100);
             $table->string('contraseña');
