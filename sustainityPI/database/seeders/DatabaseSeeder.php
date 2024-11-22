@@ -16,6 +16,8 @@ class DatabaseSeeder extends Seeder
         $this->call(donativosSeeder::class);
         
         $this->call(crearcuentaseeder::class);
+
+        $this->call(nosotrosSeeder::class);
         // User::factory(10)->create();
 
         /* User::factory()->create([

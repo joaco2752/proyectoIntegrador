@@ -36,7 +36,7 @@
         <div class="navbar-center">
         <a href="{{ route('rutaInicio') }}">Inicio</a>
         <a href="/donar">Donativos</a>
-            <a href="{{ route('rutaNosotros')}}">Nosotros</a>
+            <a href="/info">Nosotros</a>
 
  
         </div>

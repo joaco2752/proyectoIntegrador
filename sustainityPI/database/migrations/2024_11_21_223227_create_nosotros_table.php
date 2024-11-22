@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('crear_cuenta', function (Blueprint $table) {
+        Schema::create('nosotros', function (Blueprint $table) {
             $table->id();
-            $table->string('correo', 100);
-            $table->string('contraseña');
+            $table->string('correo');
             $table->timestamps();
         });
     }
@@ -24,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('_crear_cuenta');
+        Schema::dropIfExists('nosotros');
     }
 };
