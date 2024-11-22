@@ -31,7 +31,7 @@ class nosotrosController extends Controller
      */
     public function store(validadorInfo $request)
     {
-        DB::table('donativos')->insert([
+        DB::table('nosotros')->insert([
             "correo"=>$request->input('email'),
             "created_at"=>Carbon::now(),
             "updated_at"=>Carbon::now()
