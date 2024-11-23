@@ -42,7 +42,7 @@
             <small class="text-danger fst-italic">{{ $errors->first('correo') }}</small>
 
             <label for="contraseña">Contraseña</label>
-            <input type="password" id="contraseña" name="contraseña" placeholder="Crea tu Contraseña">
+            <input type="password" id="contraseña" name="contraseña" placeholder="Actualiza tu Contraseña">
             <small class="text-danger fst-italic">{{ $errors->first('contraseña') }}</small>
 
             <label for="confirmar_contraseña">Confirmar Contraseña</label>
