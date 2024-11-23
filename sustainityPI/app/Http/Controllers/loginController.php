@@ -15,7 +15,7 @@ class loginController extends Controller
     public function index()
     {
         $consultaCuentas = DB::table('login')->get();
-        return view('Login');
+        return view('login', compact('consultaCuentas'));
     }
 
     /**

@@ -21,6 +21,10 @@ Route::get('/info', function () {
     return view('nosotros');
 })->name('rutaNosotros');
 
+Route::get('/Consulta', function () {
+    return view('Consultar');
+})->name('rutaConsultas');
+
 Route::get('/Noti', function () {
     return view('Noticias');
 })->name('rutaNoticias');
@@ -61,3 +65,7 @@ Route::get('/nosotros', [nosotrosController::class, 'index'])->name('enviarInfo'
 Route::get('/login/create', [loginController::class, 'create'])->name('rutaLogin');
 Route::post('/Login', [loginController::class, 'store'])->name('rutaLogin');
 Route::get('/Login', [loginController::class, 'index'])->name('rutaLog');
+
+Route::get('/Consultar', [loginController::class, 'index'])->name('rutaConsultar');
+
+Route::view('/component','componentes')->name('rutacomponent');
