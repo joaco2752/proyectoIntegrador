@@ -65,6 +65,7 @@ class consultarController extends Controller
             "created_at"=>Carbon::now(),
             "updated_at"=>Carbon::now()
         ]);
+        session()->Flash('exito');
         return to_route('rutaConsultar')->with('message', 'Usuario Actualizado' . $request->amount . '!');
     }
 
@@ -73,7 +74,9 @@ class consultarController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        DB::table('_crear_cuenta')->where('id', $id)->delete();
+        session()->Flash('exito');
+        return to_route('rutaConsultar');
     }
 }
 
