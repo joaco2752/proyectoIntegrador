@@ -65,6 +65,9 @@
                 @endforelse
             </tbody>
         </table>
+        <a href="{{ route('rutaInicio') }}" class="btn btn-primary btn-sm">
+            {{ __('Salir') }}
+        </a>
     </div>
     <script>
         function confirmarcuenta(usuarioid) {
