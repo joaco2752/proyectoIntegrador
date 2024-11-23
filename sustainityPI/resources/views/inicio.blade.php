@@ -21,7 +21,7 @@
     <a href="{{ route('rutaInicio') }}">Inicio</a>
         <a href="/donar">Donativos</a>
         <a href="/info">Nosotros</a>
-        <a href="/Consulta">Consultar</a>
+        <a href="{{ route('rutaConsultar') }}">Consultar</a>
     </nav>
     <div class="navbar-right auth-buttons">
         <button class="login-btn" onclick="window.location.href='{{ route('rutaLogin') }}'">Iniciar Sesión</button>
