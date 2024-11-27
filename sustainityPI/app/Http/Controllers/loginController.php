@@ -37,6 +37,8 @@ class loginController extends Controller
             "created_at"=>Carbon::now(),
             "updated_at"=>Carbon::now()
         ]);
+
+        session(['logged_in' => true]);
         return to_route('rutaInicio')->with('message', 'Inicio de Sesion Exitoso' . $request->amount . '!');
     }
 

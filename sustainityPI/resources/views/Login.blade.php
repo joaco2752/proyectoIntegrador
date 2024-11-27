@@ -73,6 +73,13 @@
         </div>
         <p>&copy; 2024 Sustainity. Todos los derechos reservados.</p>
     </footer>
+
+    <script>
+        document.getElementById('loginBtn').addEventListener('click', function() {
+            // Ocultar el botón al hacer clic
+            this.style.display = 'none';
+        });
+    </script>
     
 </body>
 </html>
