@@ -31,7 +31,10 @@
 <div class="main-card appear-on-load">
     <div class="text-content">
         <h1>SUSTAINITY</h1>
-        <p>Una aventura inolvidable te espera en un mundo de píxeles. Explora, lucha y descubre los secretos de esta tierra mística.</p>
+        <p>Una aventura inolvidable te espera en un mundo de píxeles. Explora, lucha y descubre los secretos de esta tierra sumida en la oscuridad.</p>
+        <button class="demo-btn" onclick="window.location.href='{{ asset('demo/Sustainity_Demo.zip') }}'">
+        Descargar Demo
+    </button>
     </div>
     <img src="{{ asset('img/Daryl_fondo.png') }}" alt="Personaje" class="character-image">
 </div>
@@ -64,7 +67,7 @@
     </div>
     <div class="video-content" >
         <video controls>
-            <source src="{{ asset('videos/trailer.mp4') }}" type="video/mp4">
+            <source src="{{ asset('img/trailer.mp4') }}" type="video/mp4">
             Tu navegador no soporta el elemento de video.
         </video>
     </div>

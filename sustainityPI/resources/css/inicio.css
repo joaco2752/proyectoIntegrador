@@ -86,6 +86,29 @@ body {
     background-color: #fff;
     color: #0d0d0d;
 }
+.demo-btn {
+    margin-top: 20px;
+    padding: 25px 20px;
+    font-size: 1rem;
+    font-family: 'Press Start 2P', cursive;
+    color: #fff;
+    background-color: #581369;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.demo-btn:hover {
+    background-color: #7c0e26;
+    transform: scale(1.05);
+}
+
+.demo-btn:active {
+    transform: scale(0.95);
+}
 
 .news-btn:hover {
     background: none;
