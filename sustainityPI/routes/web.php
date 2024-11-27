@@ -4,6 +4,8 @@ use App\Http\Controllers\ControladorVistas;
 use App\Http\Controllers\donativoController;
 use App\Http\Controllers\crearcuentaController;
 use App\Http\Controllers\nosotrosController;
+use App\Http\Controllers\loginController;
+use App\Http\Controllers\consultarController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -20,13 +22,17 @@ Route::get('/info', function () {
     return view('nosotros');
 })->name('rutaNosotros');
 
+Route::get('/Consulta', function () {
+    return view('Consultar');
+})->name('rutaConsultas');
+
 Route::get('/Noti', function () {
     return view('Noticias');
 })->name('rutaNoticias');
 
-Route::get('/Login', [ControladorVistas::class, 'login'])->name('rutaLogin');
+/* Route::get('/Login', [ControladorVistas::class, 'login'])->name('rutaLogin');
 
-Route::post('/Login', [ControladorVistas::class, 'iniciasesion'])->name('rutalogin');
+Route::post('/Login', [ControladorVistas::class, 'iniciasesion'])->name('rutalogin'); */
 
 
 
@@ -56,3 +62,14 @@ Route::get('/CrearCuenta', [crearcuentaController::class, 'index'])->name('rutaC
 Route::get('/nosotros/create', [nosotrosController::class, 'create'])->name('rutaInfo');
 Route::post('/nosotros/create', [nosotrosController::class, 'store'])->name('rutaInfo');
 Route::get('/nosotros', [nosotrosController::class, 'index'])->name('enviarInfo');
+
+Route::get('/login/create', [loginController::class, 'create'])->name('rutaLogin');
+Route::post('/Login', [loginController::class, 'store'])->name('rutaLogin');
+Route::get('/Login', [loginController::class, 'index'])->name('rutaLog');
+
+Route::get('/Consultar', [consultarController::class, 'index'])->name('rutaConsultar');
+Route::get('/Consultar/{id}/edit',[consultarController::class,'edit'])->name('rutaFormConsulta');
+Route::put('/Consultar/{id}', [consultarController::class, 'update'])->name('rutaActualizar');
+Route::delete('/Consultar/{id}', [consultarController::class, 'destroy'])->name('rutaEliminar');
+
+Route::view('/component','componentes')->name('rutacomponent');

@@ -48,7 +48,7 @@
     <div class="main-card">
         <div class="text-content">
             <h1>Inicia Sesión</h1>
-            <form action="{{ route('rutalogin') }}" method="POST" class="donation-form">
+            <form action="{{ route('rutaLogin') }}" method="POST" class="donation-form">
                 @csrf
                 <label for="name">Correo Electronico</label>
                 <input type="text" id="correo" name="correo" placeholder="Correo">
