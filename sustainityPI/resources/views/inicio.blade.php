@@ -41,7 +41,7 @@
         <a href="{{ route('rutaConsultar') }}">Consultar</a>
     </nav>
     <div class="navbar-right auth-buttons">
-        <button class="login-btn" onclick="window.location.href='{{ route('rutaLogin') }}'">Iniciar Sesión</button>
+        <button class="login-btn" id="loginBtn" onclick="window.location.href='{{ route('rutaLogin') }}'">Iniciar Sesión</button>
         <button class="news-btn" onclick="window.location.href='{{ route('rutaNoticias') }}'">Noticias</button>
     </div>
 </header>
@@ -91,6 +91,14 @@
     </div>
 </div>
 
+<div class="navbar-right auth-buttons">
+    @if (!session()->has('logged_in'))
+        <button class="login-btn" onclick="window.location.href='{{ route('rutaLogin') }}'">Iniciar Sesión</button>
+    @endif
+    <button class="news-btn" onclick="window.location.href='{{ route('rutaNoticias') }}'">Noticias</button>
+</div>
+
+
 <footer class="footer">
     <div class="footer-content">
         <a href="#">Política de Privacidad</a> | 
@@ -99,5 +107,6 @@
     </div>
     <p>&copy; 2024 Sustainity. Todos los derechos reservados.</p>
 </footer>
+
 </body>
 </html>

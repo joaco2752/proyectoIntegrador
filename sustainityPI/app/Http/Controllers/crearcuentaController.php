@@ -33,7 +33,7 @@ class crearcuentaController extends Controller
     {
         DB::table('_crear_cuenta')->insert([
             "correo"=>$request->input('correo'),
-            "contraseña"=>$request->input('contraseña'),
+            "contraseña"=>bcrypt($request->input('contraseña')),
             "created_at"=>Carbon::now(),
             "updated_at"=>Carbon::now()
         ]);
