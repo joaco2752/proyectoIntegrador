@@ -41,5 +41,4 @@
             </form>
             <p><a href="{{ route('rutaLogin') }}" class="Login-link">¿Ya tienes cuenta?</a></p>
         </div>
-        <img src="{{ asset('img/character.png') }}" alt="Game Character" class="character-image">
     </div>

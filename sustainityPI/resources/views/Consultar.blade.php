@@ -25,7 +25,6 @@
                 <tr>
                     <th>ID</th>
                     <th>Correo</th>
-                    <th>Contraseña</th>
                     <th>Creado el</th>
                     <th>Editar</th>
                     <th>Eliminar</th>
@@ -36,7 +35,6 @@
                     <tr>
                         <td>{{ $cuenta->id }} </td>
                         <td>{{ $cuenta->correo }} </td>
-                        <td>{{ $cuenta->contraseña }} </td>
                         <td>{{ $cuenta->created_at }} </td>
                         <td>
                             <form>

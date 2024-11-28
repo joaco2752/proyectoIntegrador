@@ -66,7 +66,7 @@ class consultarController extends Controller
             "updated_at"=>Carbon::now()
         ]);
         session()->Flash('exito');
-        return to_route('rutaConsultar')->with('message', 'Usuario Actualizado' . $request->amount . '!');
+        return to_route('rutaConsultar')->with('exito', 'Usuario Actualizado' . $request->amount . '!');
     }
 
     /**

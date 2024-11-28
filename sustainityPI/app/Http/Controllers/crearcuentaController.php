@@ -37,7 +37,7 @@ class crearcuentaController extends Controller
             "created_at"=>Carbon::now(),
             "updated_at"=>Carbon::now()
         ]);
-        return to_route('rutaInicio')->with('message', 'Gracias por registrarte' . $request->amount . '!');
+        return to_route('rutaLog')->with('message', 'Gracias por registrarte' . $request->amount . '!');
     }
 
     /**

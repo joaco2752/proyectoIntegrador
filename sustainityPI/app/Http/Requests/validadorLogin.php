@@ -22,7 +22,7 @@ class validadorLogin extends FormRequest
     public function rules(): array
     {
         return [
-            'correo' => 'email:rfc:dns',
+            'correo' => 'email:rfc:dns|required',
             'contraseña' => 'required'
         ];
     }

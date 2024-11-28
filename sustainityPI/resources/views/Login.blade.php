@@ -52,11 +52,11 @@
                 @csrf
                 <label for="name">Correo Electronico</label>
                 <input type="text" id="correo" name="correo" placeholder="Correo">
-                <small class="text-danger fst-italic">{{ $errors->first('correoL') }}</small>
+                <small class="text-danger fst-italic">{{ $errors->first('correo') }}</small>
                 
                 <label for="email">Contraseña</label>
                 <input type="password" id="contraseña" name="contraseña" placeholder="Contraseña">
-                <small class="text-danger fst-italic">{{ $errors->first('contraseñaL') }}</small>
+                <small class="text-danger fst-italic">{{ $errors->first('contraseña') }}</small>
                 
                 <button type="submit" class="play-btn" name="btnDonar">Iniciar Sesión</button>
             </form>
