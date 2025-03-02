@@ -30,6 +30,10 @@ Route::get('/Noti', function () {
     return view('Noticias');
 })->name('rutaNoticias');
 
+Route::get('/demo', function () {
+    return view('demo');
+})->name('rutaDemoDesarrollo');
+
 /* Route::get('/Login', [ControladorVistas::class, 'login'])->name('rutaLogin');
 
 Route::post('/Login', [ControladorVistas::class, 'iniciasesion'])->name('rutalogin'); */
@@ -73,3 +77,4 @@ Route::put('/Consultar/{id}', [consultarController::class, 'update'])->name('rut
 Route::delete('/Consultar/{id}', [consultarController::class, 'destroy'])->name('rutaEliminar');
 
 Route::view('/component','componentes')->name('rutacomponent');
+
