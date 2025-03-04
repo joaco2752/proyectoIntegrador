@@ -348,3 +348,66 @@ p {
     width: 700px;
 }
 
+.payment-fields {
+    display: none;
+    margin-top: 15px;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.payment-fields.active {
+    display: block;
+}
+
+.payment-fields input,
+.payment-fields select {
+    width: 100%;
+    padding: 10px;
+    font-size: 0.8em;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: 2px solid #ffcb05;
+    border-radius: 5px;
+    font-family: 'Press Start 2P', cursive;
+    margin-bottom: 10px;
+}
+
+.payment-fields input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.payment-fields select option {
+    background-color: #1a1a1a;
+}
+
+.payment-fields label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.8em;
+    color: #ffcb05;
+}
+
+.payment-group {
+    margin-bottom: 15px;
+}
+
+.card-row {
+    display: flex;
+    gap: 10px;
+}
+
+.card-row > div {
+    flex: 1;
+}
+
+small {
+    display: block;
+    color: #ff5722;
+    font-size: 0.7em;
+    margin-top: 3px;
+    margin-bottom: 5px;
+}
