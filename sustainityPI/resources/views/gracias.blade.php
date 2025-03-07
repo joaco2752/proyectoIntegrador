@@ -1,29 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donate to Sustainity</title>
+    <title>Gracias por tu donación</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     @vite(['resources/css/donativos.css'])
     @vite('resources/js/script.js')
 </head>
+
 <body>
     <nav class="navbar">
         @if (session('message'))
-        <div id="alerta_tiempo" class="alert" style="width: 100%; padding: 15px 0; position: fixed; top: 80px; left: 0; z-index: 1000;">
-            {{ session('message') }}
-            <script>
-                document.addEventListener("DOMContentLoaded", function() {
-                    const alertMessage = document.getElementById("alerta_tiempo");
-                    if (alertMessage) {
-                        setTimeout(() => {
-                            alertMessage.style.display = "none";
-                        }, 5000); 
-                    }
-                });
-            </script>
-        </div>
+            <div id="alerta_tiempo" class="alert"
+                style="width: 100%; padding: 15px 0; position: fixed; top: 80px; left: 0; z-index: 1000;">
+                {{ session('message') }}
+                <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+                        const alertMessage = document.getElementById("alerta_tiempo");
+                        if (alertMessage) {
+                            setTimeout(() => {
+                                alertMessage.style.display = "none";
+                            }, 5000);
+                        }
+                    });
+                </script>
+            </div>
         @endif
         <div class="navbar-left">
             <a href="#">
@@ -40,20 +43,10 @@
             <button class="news-btn">Noticias</button>
         </div>
     </nav>
-
     <div class="main-card">
         <div class="text-content">
-            <h1>Apoya Sustainity</h1>
-            <p>Ayúdanos a hacer un mundo mejor, un juego a la vez</p>
-            
-            <form action="{{ route('rutaCheckout') }}" method="POST" class="donation-form">
-                @csrf
-                <label for="amount">Cantidad a Donar ($):</label>
-                <input type="number" id="amount" name="amount" placeholder="Cantidad" min="5" required>
-                <small>{{ $errors->first('amount') }}</small>
-                
-                <button type="submit" class="play-btn">Haz tu donación</button>
-            </form>
+            <h1>¡Gracias por tu donación!</h1>
+            <p>Tu apoyo es muy importante para nosotros.</p>
         </div>
         <img src="{{ asset('img/donativos_fondo.png') }}" alt="Personaje" class="character-image">
     </div>
@@ -66,4 +59,5 @@
         <p>&copy; 2023 Sustainity. All rights reserved.</p>
     </footer>
 </body>
+
 </html>

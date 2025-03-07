@@ -7,6 +7,9 @@ use App\Http\Controllers\nosotrosController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\consultarController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use Stripe\Stripe;
+use Stripe\Checkout\Session;
 
 
 
@@ -78,3 +81,45 @@ Route::delete('/Consultar/{id}', [consultarController::class, 'destroy'])->name(
 
 Route::view('/component','componentes')->name('rutacomponent');
 
+
+
+// Ruta para mostrar el formulario de donación
+Route::get('/donar', function () {
+    return view('donativos'); // Vista con el formulario de donación
+})->name('rutaDonativos');
+
+// Ruta para manejar el pago con Stripe
+Route::post('/checkout', function (Request $request) {
+    Stripe::setApiKey(env('STRIPE_SECRET'));
+
+    // Crear una sesión de pago con Stripe
+    $session = Session::create([
+        'payment_method_types' => ['card'],
+        'mode' => 'payment',
+        'line_items' => [[
+            'price_data' => [
+                'currency' => 'mxn',
+                'product_data' => [
+                    'name' => 'Donación',
+                ],
+                'unit_amount' => $request->amount * 100, // Convierte a centavos
+            ],
+            'quantity' => 1,
+        ]],
+        'success_url' => url('/gracias'), // URL de éxito
+        'cancel_url' => url('/cancelado'), // URL de cancelación
+    ]);
+
+    // Redirigir al usuario a la página de pago de Stripe
+    return redirect($session->url);
+})->name('rutaCheckout');
+
+// Ruta para la página de agradecimiento (éxito)
+Route::get('/gracias', function () {
+    return view('gracias'); // Vista de agradecimiento
+})->name('rutaGracias');
+
+// Ruta para la página de cancelación
+Route::get('/cancelado', function () {
+    return view('cancelado'); // Vista de cancelación
+})->name('rutaCancelado');
