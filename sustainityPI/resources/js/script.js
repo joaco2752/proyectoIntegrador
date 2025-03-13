@@ -16,3 +16,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     cards.forEach(card => observer.observe(card));
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const donationForm = document.querySelector(".donation-form");
+    const amountInput = document.getElementById("amount");
+
+    amountInput.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault(); // Evita que el formulario se envíe de forma predeterminada
+            donationForm.submit(); // Envía el formulario manualmente
+        }
+    });
+});

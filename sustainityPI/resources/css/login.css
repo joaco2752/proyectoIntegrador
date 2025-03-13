@@ -387,3 +387,89 @@ p {
     margin-left: 20px;
 }
 
+.password-strength-meter {
+    height: 10px;
+    width: 100%;
+    max-width: 300px;
+    background-color: rgba(255, 255, 255, 0.1);
+    margin: 10px 0;
+    border-radius: 5px;
+    overflow: hidden;
+    display: none;
+}
+
+.password-strength-meter-bar {
+    height: 100%;
+    border-radius: 5px;
+    transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.strength-weak {
+    width: 25%;
+    background-color: #ff4d4d;
+}
+
+.strength-medium {
+    width: 50%;
+    background-color: #ffa500;
+}
+
+.strength-good {
+    width: 75%;
+    background-color: #ffcb05;
+}
+
+.strength-strong {
+    width: 100%;
+    background-color: #4CAF50;
+}
+
+.password-feedback {
+    font-size: 0.7em;
+    margin: 5px 0 15px 0;
+    color: #ffcb05;
+    display: none;
+    text-align: center;
+    max-width: 300px;
+}
+
+.password-field-container {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #ffcb05;
+    cursor: pointer;
+    font-size: 0.7em;
+    padding: 0;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.create-account-link {
+    color: #ffcb05;
+    text-decoration: none;
+    margin-top: 20px;
+    display: inline-block;
+    transition: color 0.3s;
+}
+
+.create-account-link:hover {
+    color: #ff5722;
+}
+
+small.text-danger {
+    color: #ff5722;
+    display: block;
+    margin-bottom: 10px;
+    font-size: 0.7em;
+    max-width: 300px;
+    text-align: center;
+}

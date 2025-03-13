@@ -108,12 +108,7 @@
         </div>
     </div>
 
-    <div class="navbar-right auth-buttons">
-        @if (!session()->has('logged_in'))
-            <button class="login-btn" onclick="window.location.href='{{ route('rutaLogin') }}'">Iniciar Sesión</button>
-        @endif
-        <button class="news-btn" onclick="window.location.href='{{ route('rutaNoticias') }}'">Noticias</button>
-    </div>
+    
 
 
     <footer class="footer">
