@@ -38,9 +38,12 @@
             <a href="/donar">Donativos</a>
             <a href="/info">Nosotros</a>
         </div>
-        <div class="navbar-right">
-            <button class="login-btn" onclick="window.location.href='{{ route('rutaLogin') }}'">Iniciar Sesión</button>
-            <button class="news-btn">Noticias</button>
+        <div class="navbar-right auth-buttons">
+            @if (!session('logged_in'))
+                <button class="login-btn" onclick="window.location.href='{{ route('rutaLogin') }}'">Iniciar Sesión</button>
+                
+            @endif
+            <button class="news-btn" onclick="window.location.href='{{ route('rutaNoticias') }}'">Noticias</button>
         </div>
     </nav>
     <div class="main-card">

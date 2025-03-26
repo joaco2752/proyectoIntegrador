@@ -22,7 +22,10 @@
         <a href="{{ route('rutaNosotros')}}">Nosotros</a>
     </nav>
     <div class="navbar-right auth-buttons">
-        <button class="login-btn" onclick="window.location.href='{{ route('rutaLogin') }}'">Iniciar Sesión</button>
+        @if (!session('logged_in'))
+            <button class="login-btn" onclick="window.location.href='{{ route('rutaLogin') }}'">Iniciar Sesión</button>
+            
+        @endif
         <button class="news-btn" onclick="window.location.href='{{ route('rutaNoticias') }}'">Noticias</button>
     </div>
 </header>
@@ -51,8 +54,8 @@
             <form action="{{ route('rutaLogin') }}" method="POST" class="donation-form">
                 @csrf
                 <label for="name">Correo Electronico</label>
-                <input type="text" id="correo" name="correo" placeholder="Correo">
-                <small class="text-danger fst-italic">{{ $errors->first('correo') }}</small>
+                <input type="text" id="email" name="email" placeholder="Correo">
+                <small class="text-danger fst-italic">{{ $errors->first('email') }}</small>
                 
                 <label for="email">Contraseña</label>
                 <input type="password" id="contraseña" name="contraseña" placeholder="Contraseña">

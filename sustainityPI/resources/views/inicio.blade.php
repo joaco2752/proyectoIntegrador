@@ -53,8 +53,10 @@
             <a href="{{ route('rutaConsultar') }}">Consultar</a>
         </nav>
         <div class="navbar-right auth-buttons">
-            <button id="inicio1" style="display: inline" class="login-btn" id="loginBtn"
-                onclick="window.location.href='{{ route('rutaLogin') }}'">Iniciar Sesión</button>
+            @if (!session('logged_in'))
+                <button class="login-btn" onclick="window.location.href='{{ route('rutaLogin') }}'">Iniciar Sesión</button>
+                
+            @endif
             <button class="news-btn" onclick="window.location.href='{{ route('rutaNoticias') }}'">Noticias</button>
         </div>
     </header>

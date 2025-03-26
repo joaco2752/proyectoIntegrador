@@ -52,8 +52,8 @@
                 @csrf
                 <div class="password-field-container">
                 <label for="correo">Correo Electrónico</label>
-                    <input type="text" id="correo" name="correo" placeholder="" value="{{ old('correo') }}">
-                    <small class="text-danger fst-italic">{{ $errors->first('correo') }}</small>
+                    <input type="text" id="email" name="email" placeholder="" value="{{ old('email') }}">
+                    <small class="text-danger fst-italic">{{ $errors->first('email') }}</small>
                 </div>
 
                 <label for="contraseña">Contraseña</label>

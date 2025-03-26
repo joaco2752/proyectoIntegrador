@@ -34,7 +34,7 @@
                 @forelse ($consultaCuentas as $cuenta)
                     <tr>
                         <td>{{ $cuenta->id }} </td>
-                        <td>{{ $cuenta->correo }} </td>
+                        <td>{{ $cuenta->email }} </td>
                         <td>{{ $cuenta->created_at }} </td>
                         <td>
                             <form>

@@ -23,7 +23,10 @@
         <a href="{{ route('rutaNosotros')}}">Nosotros</a>
     </nav>
     <div class="navbar-right auth-buttons">
-        <button class="login-btn" onclick="window.location.href='{{ route('rutaLogin') }}'">Iniciar Sesión</button>
+        @if (!session('logged_in'))
+            <button class="login-btn" onclick="window.location.href='{{ route('rutaLogin') }}'">Iniciar Sesión</button>
+            
+        @endif
         <button class="news-btn" onclick="window.location.href='{{ route('rutaNoticias') }}'">Noticias</button>
     </div>
 </header>

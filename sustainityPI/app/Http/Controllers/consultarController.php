@@ -14,7 +14,7 @@ class consultarController extends Controller
      */
     public function index()
     {
-        $consultaCuentas = DB::table('_crear_cuenta')->get();
+        $consultaCuentas = DB::table('usuarios')->get();
         return view('Consultar', compact('consultaCuentas'));
     }
 
@@ -47,7 +47,7 @@ class consultarController extends Controller
      */
     public function edit(string $id)
     {
-        $usuario = DB::table('_crear_cuenta')->where('id', $id)->first();
+        $usuario = DB::table('usuarios')->where('id', $id)->first();
         if (!$usuario) {
             return redirect()->route('rutaConsultar')->with('error', 'Usuario no encontrado');
         }
@@ -59,8 +59,8 @@ class consultarController extends Controller
      */
     public function update(validadorCrear $request, string $id)
     {
-        DB::table('_crear_cuenta')->where('id', $id)->update([
-            "correo"=>$request->input('correo'),
+        DB::table('usuarios')->where('id', $id)->update([
+            "email"=>$request->input('email'),
             "contraseña"=>$request->input('contraseña'),
             "created_at"=>Carbon::now(),
             "updated_at"=>Carbon::now()
@@ -74,7 +74,7 @@ class consultarController extends Controller
      */
     public function destroy(string $id)
     {
-        DB::table('_crear_cuenta')->where('id', $id)->delete();
+        DB::table('usuarios')->where('id', $id)->delete();
         session()->Flash('exito');
         return to_route('rutaConsultar');
     }

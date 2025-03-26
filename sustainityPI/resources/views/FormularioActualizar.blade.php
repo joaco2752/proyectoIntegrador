@@ -38,8 +38,8 @@
             @csrf
             @method('PUT')
             <label for="correo">Correo Electrónico</label>
-            <input type="text" id="correo" name="correo" placeholder="Tu Correo">
-            <small class="text-danger fst-italic">{{ $errors->first('correo') }}</small>
+            <input type="text" id="email" name="email" placeholder="Tu Correo">
+            <small class="text-danger fst-italic">{{ $errors->first('email') }}</small>
 
             <label for="contraseña">Contraseña</label>
             <input type="password" id="contraseña" name="contraseña" placeholder="Actualiza tu Contraseña">

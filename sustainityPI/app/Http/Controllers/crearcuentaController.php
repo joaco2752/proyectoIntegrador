@@ -14,7 +14,7 @@ class crearcuentaController extends Controller
      */
     public function index()
     {
-        $consultaCuentas = DB::table('_crear_cuenta')->get();
+        $consultaCuentas = DB::table('usuarios')->get();
         return view('CrearCuenta', compact('consultaCuentas'));
     }
 
@@ -31,8 +31,8 @@ class crearcuentaController extends Controller
      */
     public function store(validadorCrear $request)
     {
-        DB::table('_crear_cuenta')->insert([
-            "correo"=>$request->input('correo'),
+        DB::table('usuarios')->insert([
+            "email"=>$request->input('email'),
             "contraseña"=>bcrypt($request->input('contraseña')),
             "created_at"=>Carbon::now(),
             "updated_at"=>Carbon::now()

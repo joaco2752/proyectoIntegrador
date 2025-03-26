@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use App\Http\Requests\validadorLogin;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+
 
 class loginController extends Controller
 {
@@ -14,7 +17,7 @@ class loginController extends Controller
      */
     public function index()
     {
-        $consultaCuentas = DB::table('login')->get();
+        $consultaCuentas = DB::table('usuarios')->get();
         return view('login', compact('consultaCuentas'));
     }
 
@@ -31,15 +34,23 @@ class loginController extends Controller
      */
     public function store(validadorLogin $request)
     {
-        DB::table('login')->insert([
-            "correo"=>$request->input('correo'),
-            "contraseña"=>$request->input('contraseña'),
-            "created_at"=>Carbon::now(),
-            "updated_at"=>Carbon::now()
-        ]);
+        // Validar que las credenciales sean correctas
+        $usuario = DB::table('usuarios')->where('email', $request->email)->first();
 
+        // Verificar si el usuario existe y si la contraseña es correcta
+        if ($usuario && Hash::check($request->contraseña, $usuario->contraseña)) {
+            // Iniciar sesión
+            Auth::loginUsingId($usuario->id);
+
+            // Guardar una variable de sesión que indique que el usuario está logueado
         session(['logged_in' => true]);
-        return to_route('rutaInicio')->with('message', 'Inicio de Sesion Exitoso' . $request->amount . '!');
+
+            // Redirigir al dashboard o página principal
+            return redirect()->route('rutaInicio')->with('message', 'Inicio de sesión exitoso');
+        } else {
+            // Si las credenciales no son correctas
+            return back()->withErrors(['email' => 'Las credenciales son incorrectas.']);
+        }
     }
 
     /**
