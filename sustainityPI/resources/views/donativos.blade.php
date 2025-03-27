@@ -52,7 +52,7 @@
             <form action="{{ route('rutaCheckout') }}" method="POST" class="donation-form">
                 @csrf
                 <label for="amount">Cantidad a Donar ($):</label>
-                <input type="number" id="amount" name="amount" placeholder="Cantidad" min="5" required>
+                <input type="number" id="amount" name="amount" placeholder="Cantidad" min="1.00" max="9999.99" step="0.01" required>
                 <small>{{ $errors->first('amount') }}</small>
                 
                 <button type="submit" class="play-btn">Haz tu donación</button>

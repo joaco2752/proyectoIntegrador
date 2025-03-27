@@ -39,7 +39,7 @@ class donativoController extends Controller
             "created_at"=>Carbon::now(),
             "updated_at"=>Carbon::now()
         ]);
-        return to_route('rutaDonativos')->with('message', 'Gracias por tu donación de $' . $request->amount . '!');
+        return to_route('rutaDonativos')->with('message', 'Gracias por tu donación de $' . number_format($request->amount, 2) . '!');
     }
 
     /**
