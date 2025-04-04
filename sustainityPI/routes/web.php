@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Stripe\Stripe;
 use Stripe\Checkout\Session;
-
+use App\Http\Controllers\Api\NewsController;
 
 
 Route::get('/', function () {
@@ -29,9 +29,8 @@ Route::get('/Consulta', function () {
     return view('Consultar');
 })->name('rutaConsultas');
 
-Route::get('/Noti', function () {
-    return view('Noticias');
-})->name('rutaNoticias');
+
+Route::get('/Noti', [NewsController::class, 'index'])->name('rutaNoticias');
 
 Route::get('/demo', function () {
     return view('demo');
