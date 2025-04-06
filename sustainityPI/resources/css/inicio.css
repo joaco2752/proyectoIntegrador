@@ -6,7 +6,263 @@ body {
     font-family: 'Press Start 2P', cursive;
     color: #fff;
 }
+.news-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    padding: 20px;
+}
+.main-card {
+    width: 100%;
+    max-width: 800px; /* Tamaño máximo del recuadro */
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    text-align: left;
+}
+.text-content {
+    margin-bottom: 10px;
+}
+.news-title {
+    margin: 0 0 15px;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+.news-description {
+    margin: 0 0 15px;
+    font-size: 1.1rem;
+}
+.news-actions {
+    display: flex; /* Alineación horizontal */
+    gap: 10px;
+    margin-top: 10px;
+    justify-content: flex-start;
+}
+.like-btn, .dislike-btn, .toggle-comments-btn {
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 10px 15px;
+    border: 2px solid transparent;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
 
+/* Estilo para los iconos y texto dentro de los botones */
+.like-btn i, .dislike-btn i, .toggle-comments-btn i {
+    margin-right: 5px; /* Espacio entre el icono y el texto */
+}
+
+/* Estilo para el botón "Like" */
+.like-btn {
+    background-color: #007bff;   /* Color de fondo azul */
+    color: white;                /* Texto blanco */
+    border-color: #007bff;       /* Borde azul */
+}
+
+/* Estilo para el botón "Like" al pasar el mouse */
+.like-btn:hover {
+    background-color: #0056b3;   /* Cambio de color al pasar el mouse */
+    border-color: #0056b3;
+}
+
+/* Estilo para el botón "Dislike" */
+.dislike-btn {
+    background-color: #dc3545;   /* Color de fondo rojo */
+    color: white;                /* Texto blanco */
+    border-color: #dc3545;       /* Borde rojo */
+}
+
+/* Estilo para el botón "Dislike" al pasar el mouse */
+.dislike-btn:hover {
+    background-color: #c82333;   /* Cambio de color al pasar el mouse */
+    border-color: #c82333;
+}
+
+/* Estilo para el botón "Ver comentarios" */
+.toggle-comments-btn {
+    background-color: #28a745;   /* Color de fondo verde */
+    color: white;                /* Texto blanco */
+    border-color: #28a745;       /* Borde verde */
+}
+
+/* Estilo para el botón "Ver comentarios" al pasar el mouse */
+.toggle-comments-btn:hover {
+    background-color: #218838;   /* Cambio de color al pasar el mouse */
+    border-color: #218838;
+}
+
+/* Estilo para los botones cuando están desactivados */
+.like-btn:disabled, .dislike-btn:disabled, .toggle-comments-btn:disabled {
+    background-color: #d6d6d6;  /* Color gris para botones desactivados */
+    border-color: #d6d6d6;
+    color: #7a7a7a;             /* Texto gris */
+    cursor: not-allowed;        /* Cursor deshabilitado */
+}
+
+/* Ajuste de la imagen para que siempre se muestre adecuadamente */
+.news-image {
+    width: 100%;
+    height: 300px; /* Fija la altura para evitar que se salga del contenedor */
+    object-fit: cover; /* Recorta la imagen conservando la relación sin deformación */
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+/* Estilo para los comentarios */
+.comments {
+    margin-top: 10px;
+}
+
+.new-comment {
+    width: 100%;
+    margin-top: 5px;
+}
+
+/* Modal para comentarios */
+#commentsModal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    z-index: 1000;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    max-width: 600px;
+    width: 90%;
+    display: none;
+}
+#commentsModal h2 {
+    margin-top: 0;
+}
+#modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 999;
+    display: none;
+}
+.news-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    padding: 20px;
+  }
+  .main-card {
+    width: 100%;
+    max-width: 800px;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    text-align: left;
+  }
+  .text-content { margin-bottom: 10px; }
+  .news-title { margin: 0 0 15px; font-size: 1.8rem; font-weight: bold; }
+  .news-description { margin: 0 0 15px; font-size: 1.1rem; }
+  .news-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    justify-content: flex-start;
+  }
+  .like-btn, .dislike-btn, .toggle-comments-btn {
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 10px 15px;
+    border: 2px solid transparent;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+  .like-btn i, .dislike-btn i, .toggle-comments-btn i { margin-right: 5px; }
+  .like-btn { background-color: #007bff; color: white; border-color: #007bff; }
+  .like-btn:hover { background-color: #0056b3; border-color: #0056b3; }
+  .dislike-btn { background-color: #dc3545; color: white; border-color: #dc3545; }
+  .dislike-btn:hover { background-color: #c82333; border-color: #c82333; }
+  .toggle-comments-btn { background-color: #28a745; color: white; border-color: #28a745; }
+  .toggle-comments-btn:hover { background-color: #218838; border-color: #218838; }
+  .like-btn:disabled, .dislike-btn:disabled, .toggle-comments-btn:disabled {
+    background-color: #d6d6d6;
+    border-color: #d6d6d6;
+    color: #7a7a7a;
+    cursor: not-allowed;
+  }
+  .news-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 15px;
+  }
+  .comments { margin-top: 10px; }
+  .new-comment { width: 100%; margin-top: 5px; }
+  /* Modal para comentarios */
+  #commentsModal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    z-index: 1000;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    max-width: 600px;
+    width: 90%;
+    display: none;
+  }
+  #commentsModal h2 { margin-top: 0; }
+  #modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 999;
+    display: none;
+  }
+  /* Modal de carga */
+  #loadingModal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+  }
+  #loadingModal > div {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
+  }
+  /* Estilos para cada comentario en el modal */
+  .comment-item {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+  }
+  .comment-item p { margin: 0; }
+  .comment-item small { color: #555; }
+  .comment-item button {
+    margin-right: 5px;
+    font-size: 0.8rem;
+    padding: 3px 6px;
+  }
 .user-info:hover .logout-menu {
     display: block;
 }
@@ -51,7 +307,10 @@ body {
     white-space: nowrap; /* Evita que el texto se divida en múltiples líneas */
     min-width: fit-content; /* Asegura que el botón se ajuste al contenido */
 }
-
+.loading-text {
+    color: #000000; /* Cambia el color aquí */
+    font-family: 'Press Start 2P', cursive;
+}
 .logout-dropdown button:hover {
     background-color: darkred;
 }

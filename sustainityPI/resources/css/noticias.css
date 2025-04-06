@@ -1,0 +1,685 @@
+/* Reset básico y estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1a1a1a;
+    font-family: 'Press Start 2P', cursive;
+    color: #fff;
+    /* Se agrega padding-top para que el contenido no quede oculto tras el navbar fijo */
+    padding-top: 80px; 
+}
+
+.news-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    padding: 20px;
+}
+.main-card {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.2); /* Fondo blanco con transparencia */
+    padding: 40px;
+    color: #fff;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.858);
+   
+    color: #fff;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.3)), url('/public/img/fondo.webp');
+    background-size: cover;
+    background-position: center;
+    margin-top: 90px;
+}
+.main-card img.Parche-image, .trailer-card img.discord-image {
+    width: 50%; 
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-left: 20px;
+}
+.text-content {
+    margin-bottom: 10px;
+}
+.news-title {
+    color: #ffa500;
+    margin: 0 0 15px;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+.news-description {
+    margin: 0 0 15px;
+    font-size: 1.1rem;
+}
+.news-actions {
+    display: flex; /* Alineación horizontal */
+    gap: 10px;
+    margin-top: 10px;
+    justify-content: flex-start;
+}
+.like-btn, .dislike-btn, .toggle-comments-btn {
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 10px 15px;
+    border: 2px solid transparent;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+/* Estilo para los iconos y texto dentro de los botones */
+.like-btn i, .dislike-btn i, .toggle-comments-btn i {
+    margin-right: 5px; /* Espacio entre el icono y el texto */
+}
+
+/* Estilo para el botón "Like" */
+.like-btn {
+    background-color: #007bff;   /* Color de fondo azul */
+    color: white;                /* Texto blanco */
+    border-color: #007bff;       /* Borde azul */
+}
+
+/* Estilo para el botón "Like" al pasar el mouse */
+.like-btn:hover {
+    background-color: #0056b3;   /* Cambio de color al pasar el mouse */
+    border-color: #0056b3;
+}
+
+/* Estilo para el botón "Dislike" */
+.dislike-btn {
+    background-color: #dc3545;   /* Color de fondo rojo */
+    color: white;                /* Texto blanco */
+    border-color: #dc3545;       /* Borde rojo */
+}
+
+/* Estilo para el botón "Dislike" al pasar el mouse */
+.dislike-btn:hover {
+    background-color: #c82333;   /* Cambio de color al pasar el mouse */
+    border-color: #c82333;
+}
+
+/* Estilo para el botón "Ver comentarios" */
+.toggle-comments-btn {
+    background-color: #28a745;   /* Color de fondo verde */
+    color: white;                /* Texto blanco */
+    border-color: #28a745;       /* Borde verde */
+}
+
+/* Estilo para el botón "Ver comentarios" al pasar el mouse */
+.toggle-comments-btn:hover {
+    background-color: #218838;   /* Cambio de color al pasar el mouse */
+    border-color: #218838;
+}
+
+/* Estilo para los botones cuando están desactivados */
+.like-btn:disabled, .dislike-btn:disabled, .toggle-comments-btn:disabled {
+    background-color: #d6d6d6;  /* Color gris para botones desactivados */
+    border-color: #d6d6d6;
+    color: #7a7a7a;             /* Texto gris */
+    cursor: not-allowed;        /* Cursor deshabilitado */
+}
+
+/* Ajuste de la imagen para que siempre se muestre adecuadamente */
+.news-image {
+    width: 100%;
+    height: 300px; /* Fija la altura para evitar que se salga del contenedor */
+    object-fit: cover; /* Recorta la imagen conservando la relación sin deformación */
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+/* Asegúrate que el contenedor interno de comentarios se muestre correctamente */
+#modalCommentsList {
+    max-height: 400px;
+    overflow-y: auto;
+    display: block;
+}
+/* Estilo para los comentarios */
+.comments {
+    margin-top: 10px;
+}
+
+.new-comment {
+    width: 100%;
+    margin-top: 5px;
+}
+
+/* Modal para comentarios */
+#commentsModal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #2a2a2a; /* Fondo oscuro en vez de blanco */
+    color: #fff; /* Texto blanco */
+    z-index: 1000;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    max-width: 600px;
+    width: 90%;
+    border-radius: 10px;
+    display: none;
+}
+
+#commentsModal h2 {
+    margin-top: 0;
+    color: #ffa500;
+}
+
+/* Encabezado del modal: coloca el título a la izquierda y el botón de cerrar a la derecha */
+#commentsModal .modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+/* Botón de cerrar estilo X roja */
+#modalCloseBtn {
+  background: red;
+  color: white;
+  border: none;
+  font-size: 1.5em;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+  /* Se elimina la posición absolute para que se adapte al flex container */
+}
+
+/* Overlay del modal */
+#modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 999;
+    display: none;
+}
+
+/* Estilos para cada comentario en el modal */
+.comment-item {
+    background-color: #3a3a3a; /* Fondo gris oscuro */
+    border: 1px solid #555;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+    color: #fff;
+}
+.comment-item p {
+    margin-bottom: 5px;
+    font-size: 0.9em;
+}
+.comment-item small {
+    font-size: 0.7em;
+    color: #ccc;
+}
+
+.text-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+.text-content-left {
+    max-width: 50%;
+    z-index: 1;
+    text-align: center;
+}
+
+.play-btn {
+    padding: 12px 24px;
+    font-size: 1em;
+    background-color: #ff5722;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.play-btn:hover {
+    background-color: #e64a19;
+}
+
+.character-image {
+    position: absolute;
+    right: -80px;
+    top: -150px;
+    width: 500px;
+    height: auto;
+    z-index: 2;
+    transform: rotate(10deg);
+    image-rendering: pixelated;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.footer {
+    width: 100%;
+    background-color: #111;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.8em;
+    margin-top: 200px; 
+    border-top: 2px solid #333;
+}
+
+.footer-content {
+    margin-bottom: 10px;
+}
+
+.footer-content a {
+    color: #ffcb05;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+.footer-content a:hover {
+    color: #ff5722;
+}
+
+.donation-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.donation-form input,
+.donation-form select {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 2px solid #ffcb05;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
+}
+
+.donation-form input::placeholder,
+.donation-form select {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.donation-form select option {
+    background-color: #1a1a1a;
+}
+
+.donation-form label {
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 0.8em;
+    color: #ffcb05;
+}
+
+.play-btn {
+    width: 100%;
+    max-width: 300px;
+    padding: 12px;
+    font-size: 1em;
+    background-color: #ff5722;
+    color: #fff;
+    border: none;
+    margin-top: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center;
+}
+
+.payment-buttons {
+    display: none;
+}
+
+.payment-buttons.active {
+    display: block;
+}
+
+.payment-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 0.8em;
+    text-align: center;
+    background-color: #ffcb05;
+    color: #1a1a1a;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.payment-button:hover {
+    background-color: #ffd700;
+}
+
+.alert {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    position: fixed;
+    top: 80px;
+    z-index: 1001;
+}
+.alert {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    position: fixed;
+    top: 80px;
+    z-index: 1001;
+}
+
+.password-strength-meter {
+    height: 10px;
+    width: 100%;
+    max-width: 300px;
+    background-color: rgba(255, 255, 255, 0.1);
+    margin: 10px 0;
+    border-radius: 5px;
+    overflow: hidden;
+    display: none;
+}
+
+.password-strength-meter-bar {
+    height: 100%;
+    border-radius: 5px;
+    transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.strength-weak {
+    width: 25%;
+    background-color: #ff4d4d;
+}
+
+.strength-medium {
+    width: 50%;
+    background-color: #ffa500;
+}
+
+.strength-good {
+    width: 75%;
+    background-color: #ffcb05;
+}
+
+.strength-strong {
+    width: 100%;
+    background-color: #4CAF50;
+}
+
+.password-feedback {
+    font-size: 0.7em;
+    margin: 5px 0 15px 0;
+    color: #ffcb05;
+    display: none;
+    text-align: center;
+    max-width: 300px;
+}
+
+.password-field-container {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #ffcb05;
+    cursor: pointer;
+    font-size: 0.7em;
+    padding: 0;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.create-account-link {
+    color: #ffcb05;
+    text-decoration: none;
+    margin-top: 20px;
+    display: inline-block;
+    transition: color 0.3s;
+}
+
+.create-account-link:hover {
+    color: #ff5722;
+}
+
+small.text-danger {
+    color: #ff5722;
+    display: block;
+    margin-bottom: 10px;
+    font-size: 0.7em;
+    max-width: 300px;
+    
+    text-align: center;
+}
+.loading-text {
+    color: #000000; /* Cambia el color aquí */
+    font-family: 'Press Start 2P', cursive;
+}
+.user-info:hover .logout-menu {
+    display: block;
+}
+.user-info {
+    position: relative;
+    display: inline-block;
+    margin-right: 20px; /* separa del botón Noticias */
+    vertical-align: middle;
+    margin-top: 6px
+}
+
+.username {
+    cursor: pointer;
+    padding: 15px;
+    font-size: 1.2em;
+    color: #fff; /* o el color que uses en el navbar */
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 5%;
+    background-color: rgba(13, 13, 13, 0.8);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    font-size: 0.8em;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+/* Área izquierda del navbar */
+.navbar-left a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+.navbar-left a img.logo-image {
+    height: 60px;
+    width: auto;
+}
+
+/* Área central del navbar */
+.navbar-center {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-grow: 1;
+    margin-left: 100px;
+}
+.navbar-center a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+.navbar-center a:hover {
+    color: #ffa500;
+}
+
+/* Área derecha del navbar */
+.navbar-right {
+    display: flex;
+    gap: 15px;
+    margin-right: -50px;
+}
+.login-btn,
+.news-btn {
+    padding: 10px 20px;
+    font-size: 0.8em;
+    background: none;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    font-family: 'Press Start 2P', cursive;
+}
+.news-btn {
+    background-color: #ffa500;
+    color: #0d0d0d;
+    border: none;
+}
+.login-btn:hover {
+    background-color: #fff;
+    color: #0d0d0d;
+}
+.news-btn:hover {
+    background: none;
+    color: #fff;
+    border: 2px solid #ffa500;
+}
+
+/* Estilos para información del usuario y dropdown */
+.user-info {
+    position: relative;
+    display: inline-block;
+    margin-right: 20px;
+    vertical-align: middle;
+    margin-top: 6px;
+}
+.username {
+    cursor: pointer;
+    padding: 15px;
+    font-size: 1.2em;
+    color: #fff;
+}
+.logout-dropdown {
+    position: absolute;
+    top: 120%;
+    right: 0;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    display: none;
+    z-index: 1000;
+}
+.logout-dropdown button {
+    background-color: red;
+    color: #fff;
+    font-family: 'Press Start 2P', cursive;
+    padding: 8px 15px;
+    font-size: 0.7em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+    min-width: fit-content;
+}
+.logout-dropdown button:hover {
+    background-color: darkred;
+}
+.comment-item small {
+    font-size: 0.6em; /* Ajusta este valor según lo pequeño que desees */
+    color: #ccc;
+}
+
+/* Estilo para el área de comentario en el modal */
+#modalNewComment {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1em;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  background-color: #e0e0e0;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Estilo para el botón de publicar comentario */
+#modalPostCommentBtn {
+  padding: 12px 20px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1em;
+  background-color: #FFA000;
+  color: #0d0d0d;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+#modalPostCommentBtn:hover {
+  background-color: #FFB732;
+}
+
+/* Opcional: estilos para el textarea de edición de comentario */
+.comment-edit-textarea {
+  width: 100%;
+  height: 80px;
+  padding: 8px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1em;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  background-color: #f5f5f5;
+  color: #333;
+  margin-bottom: 10px;
+}

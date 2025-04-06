@@ -9,7 +9,67 @@ body {
     font-family: 'Press Start 2P', cursive;
     color: #fff;
 }
-
+.main-card {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.2); /* Fondo blanco con transparencia */
+    padding: 40px;
+    color: #fff;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+.character-image {
+    position: absolute;
+    right: -100px; /* Ajusta la posición si es necesario */
+    top: -200px; /* Ajusta la posición si es necesario */
+    width: 600px; /* Aumenta el tamaño de la imagen */
+    height: auto;
+    z-index: 2;
+    transform: rotate(10deg);
+    image-rendering: pixelated;
+}
+#loadingModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8); /* Fondo más oscuro */
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+}
+.password-toggle {
+    position: absolute;
+    right: -40px; /* Mueve el botón más a la derecha */
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #ffcb05;
+    cursor: pointer;
+    font-size: 0.7em;
+    padding: 0;
+    font-family: 'Press Start 2P', cursive;
+}
+/* Estilo para los labels del formulario */
+.password-field-container input {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 2px solid #ffcb05;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
+}
 .user-info:hover .logout-menu {
     display: block;
 }
@@ -519,5 +579,27 @@ small.text-danger {
     margin-bottom: 10px;
     font-size: 0.7em;
     max-width: 300px;
+    
     text-align: center;
 }
+.loading-text {
+    color: #000000; /* Cambia el color aquí */
+    font-family: 'Press Start 2P', cursive;
+}
+#modalCloseBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: red;
+    color: white;
+    border: none;
+    font-size: 1.5em;
+    line-height: 1;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }

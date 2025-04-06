@@ -23,22 +23,30 @@ class UserController extends Controller
             'password' => 'required|min:8',
             'role_id' => 'required|integer',
         ]);
-
-        $userData = [
-            'username' => $data['username'],
-            'email' => $data['email'],
-            'password' => $data['password'],
-            'role_id' => $data['role_id'],
-        ];
-
+    
         try {
+            // Verificar si el correo ya existe en la API
+            $usuarios = $this->fastApi->get('/usuarios'); // Endpoint para obtener todos los usuarios
+            $correoExistente = collect($usuarios)->firstWhere('email', $data['email']);
+    
+            if ($correoExistente) {
+                return response()->json(['message' => 'El correo ya está en uso'], 422);
+            }
+    
+            // Crear el usuario si el correo no existe
+            $userData = [
+                'username' => $data['username'],
+                'email' => $data['email'],
+                'password' => $data['password'],
+                'role_id' => $data['role_id'],
+            ];
+    
             $this->fastApi->post('/usuarios', $userData);
             return response()->json(['message' => 'Usuario creado correctamente'], 201);
         } catch (\Exception $e) {
             return response()->json(['message' => 'Error al crear el usuario', 'error' => $e->getMessage()], 500);
         }
     }
-
     // Leer todos los usuarios
     public function leerUsuarios()
     {

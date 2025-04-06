@@ -46,6 +46,7 @@
 <div class="main-card">
     <div class="text-content">
         <h1>Crea tu Cuenta</h1>
+        <div id="errorMessage" style="display:none; color:#ff4d4d; font-size:0.9em; margin-bottom:15px; text-align:center;"></div>
         <form id="registerForm" method="POST">
             @csrf
             <div class="password-field-container">
@@ -53,9 +54,10 @@
                 <input type="text" id="email" name="email" placeholder="Correo Electrónico" value="{{ old('email') }}">
                 <small class="text-danger fst-italic">{{ $errors->first('email') }}</small>
             </div>
+
             <div class="password-field-container">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" placeholder="Username" value="{{ old('username') }}">
+                <label for="username">Nombre de Usuario</label>
+                <input type="text" id="username" name="username" placeholder="Nombre de Usuario" value="{{ old('username') }}">
                 <small class="text-danger fst-italic">{{ $errors->first('username') }}</small>
             </div>
             <label for="contraseña">Contraseña</label>
@@ -72,12 +74,18 @@
             </div>
             <small class="text-danger fst-italic">{{ $errors->first('confirmar_contraseña') }}</small>
             
+           
             <button type="submit" class="play-btn">Crear Cuenta</button>
         </form>
         <p><a href="{{ route('rutaLogin') }}" class="Login-link">¿Ya tienes cuenta?</a></p>
     </div>
 </div>
-
+<div id="loadingModal" style="display:none; position: fixed; top:0; left:0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index:2000; align-items:center; justify-content:center;">
+    <div style="background: #fff; padding: 20px; border-radius: 5px; font-family: 'Press Start 2P', cursive; text-align: center;">
+    <p class="loading-text">Cargando...</p>
+        
+    </div>
+</div>
 <footer class="footer">
     <div class="footer-content">
         <a href="#">Política de Privacidad</a> | 
@@ -86,65 +94,100 @@
     </div>
     <p>&copy; 2024 Sustainity. Todos los derechos reservados.</p>
 </footer>
-
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const passwordInput = document.getElementById('contraseña');
         const confirmPasswordInput = document.getElementById('confirmar_contraseña');
         const togglePasswordButton = document.getElementById('togglePassword');
         const toggleConfirmPasswordButton = document.getElementById('toggleConfirmPassword');
-        
+        const loadingModal = document.getElementById('loadingModal');
+        const errorMessage = document.getElementById('errorMessage');
+
         togglePasswordButton.addEventListener('click', function() {
             const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
             passwordInput.setAttribute('type', type);
             togglePasswordButton.textContent = type === 'password' ? 'Ver' : 'Ocultar';
         });
-        
+
         toggleConfirmPasswordButton.addEventListener('click', function() {
             const type = confirmPasswordInput.getAttribute('type') === 'password' ? 'text' : 'password';
             confirmPasswordInput.setAttribute('type', type);
             toggleConfirmPasswordButton.textContent = type === 'password' ? 'Ver' : 'Ocultar';
         });
-    });
 
-    // Envío del formulario a la API externa para crear cuenta sin notificaciones
-    document.getElementById('registerForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-        
-        const formData = new FormData(this);
-        const password = formData.get('contraseña');
-        const confirmPassword = formData.get('confirmar_contraseña');
+        let isSubmitting = false;
 
-        if(password !== confirmPassword) {
-            return;
-        }
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
 
-        const userData = {
-            username: formData.get('username'),
-            email: formData.get('email'),
-            password: password,
-            role_id: 2
-        };
+            if (isSubmitting) return; // Evita múltiples envíos
+            isSubmitting = true;
 
-        fetch('https://api-yovy.onrender.com/usuarios', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(userData)
-        })
-        .then(response => response.json())
-        .then(data => {
-            // Si se creó el usuario correctamente, se redirecciona al login.
-            if (data.message === "Usuario Guardado" || data.id) {
-                window.location.href = '/login/create';
-            } else {
-                window.location.href = '/login/create';
+            const formData = new FormData(this);
+            const username = formData.get('username');
+            const email = formData.get('email');
+            const password = formData.get('contraseña');
+            const confirmPassword = formData.get('confirmar_contraseña');
+            const errorMessage = document.getElementById('errorMessage');
+            const loadingModal = document.getElementById('loadingModal');
+
+            // Validar contraseñas
+            if (password !== confirmPassword) {
+                errorMessage.textContent = 'Las contraseñas no coinciden.';
+                errorMessage.style.display = 'block';
+                isSubmitting = false;
+                return;
             }
-        })
-        .catch(error => {
-            window.location.href = '/login/create';
+
+            // Mostrar el modal de carga
+            loadingModal.style.display = 'flex';
+
+            const userData = {
+                username: username,
+                email: email,
+                password: password,
+                role_id: 2
+            };
+
+            fetch('https://api-yovy.onrender.com/usuarios', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(userData)
+            })
+            .then(response => {
+                loadingModal.style.display = 'none'; // Ocultar el modal de carga
+                isSubmitting = false;
+                if (!response.ok) {
+                    return response.json().then(err => { throw err; });
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Si se creó el usuario correctamente, redirigir al login
+                if (data.message === "Usuario Guardado" || data.id) {
+                    window.location.href = '/login/create';
+                }
+            })
+            .catch(error => {
+                // Mostrar el mensaje de error en la página
+                loadingModal.style.display = 'none';
+                isSubmitting = false;
+
+                if (error.errors) {
+                    if (error.errors.email) {
+                        errorMessage.textContent = error.errors.email[0];
+                    } else if (error.errors.username) {
+                        errorMessage.textContent = error.errors.username[0];
+                    } else {
+                        errorMessage.textContent = 'Ocurrió un error al crear el usuario. el correo o el username ya esta en registrado.';
+                    }
+                } else {
+                    errorMessage.textContent = 'Ocurrió un error al crear el usuario. el correo o el username ya esta en registrado.';
+                }
+                errorMessage.style.display = 'block';
+            });
         });
     });
 </script>
-
 </body>
 </html>

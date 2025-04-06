@@ -31,13 +31,19 @@ class crearcuentaController extends Controller
      */
     public function store(validadorCrear $request)
     {
-        DB::table('usuarios')->insert([
-            "email"=>$request->input('email'),
-            "contraseña"=>bcrypt($request->input('contraseña')),
-            "created_at"=>Carbon::now(),
-            "updated_at"=>Carbon::now()
+        $request->validate([
+            'email' => 'required|email|unique:usuarios,email', // Asegúrate de usar el nombre correcto de la tabla
+            'username' => 'required|unique:usuarios,username',
         ]);
-        return to_route('rutaLog')->with('message', 'Gracias por registrarte' . $request->amount . '!');
+
+        DB::table('usuarios')->insert([
+            "email" => $request->input('email'),
+            "contraseña" => bcrypt($request->input('contraseña')),
+            "created_at" => Carbon::now(),
+            "updated_at" => Carbon::now()
+        ]);
+
+        return redirect()->route('rutaCrear')->with('exito', 'Usuario creado correctamente.');
     }
 
     /**

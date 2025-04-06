@@ -24,11 +24,12 @@ class loginController extends Controller
         if ($response->successful()) {
             $data = $response->json();
             if (isset($data['token']) && isset($data['usuario'])) {
-                // Guarda en sesión que el usuario está logueado, el token y el username
+                // Guarda en sesión que el usuario está logueado, el token, el username y el id del usuario
                 session([
                     'logged_in' => true,
                     'authToken' => $data['token'],
-                    'username'  => $data['usuario']['username']
+                    'username'  => $data['usuario']['username'],
+                    'user_id'   => $data['usuario']['id'],  // Asegúrate de que la API retorne el id
                 ]);
                 return redirect()->route('rutaInicio')->with('message', 'Inicio de sesión exitoso');
             }

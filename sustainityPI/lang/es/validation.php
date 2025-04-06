@@ -5,7 +5,7 @@ declare(strict_types=1);
 return [
     'accepted'             => 'El campo :attribute debe ser aceptado.',
     'accepted_if'          => 'El campo :attribute debe ser aceptado cuando :other sea :value.',
-    'active_url'           => 'El campo :attribute debe ser una URL válida.',
+    'active_url'           => 'El campo :attribute no es una URL válida.',
     'after'                => 'El campo :attribute debe ser una fecha posterior a :date.',
     'after_or_equal'       => 'El campo :attribute debe ser una fecha posterior o igual a :date.',
     'alpha'                => 'El campo :attribute sólo debe contener letras.',
@@ -150,4 +150,16 @@ return [
     'uppercase'            => 'El campo :attribute debe estar en mayúscula.',
     'url'                  => 'El campo :attribute debe ser una URL válida.',
     'uuid'                 => 'El campo :attribute debe ser un UUID válido.',
+
+    // Mensajes personalizados para campos específicos
+    'custom' => [
+        'username' => [
+            'unique' => 'El nombre de usuario ya está en uso. Por favor, elige otro.',
+        ],
+        'email' => [
+            'unique' => 'El correo ya está en uso. Por favor, utiliza otro.',
+        ],
+    ],
+
+    // Otros mensajes de validación...
 ];

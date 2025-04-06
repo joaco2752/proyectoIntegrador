@@ -75,8 +75,9 @@
 
 <!-- Modal de carga -->
 <div id="loadingModal" style="display:none; position: fixed; top:0; left:0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index:2000; align-items:center; justify-content:center;">
-    <div style="background: #fff; padding: 20px; border-radius: 5px; font-family: 'Press Start 2P', cursive;">
-        Cargando...
+    <div style="background: #fff; padding: 20px; border-radius: 5px; font-family: 'Press Start 2P', cursive; text-align: center;">
+    <p class="loading-text">Cargando...</p>
+        
     </div>
 </div>
 
@@ -91,8 +92,11 @@
               <input type="text" id="email" name="email" placeholder="Correo" value="{{ old('email') }}"> 
               <small class="text-danger fst-italic">{{ $errors->first('email') }}</small> 
               <label for="contraseña">Contraseña</label> 
-              <input type="password" id="contraseña" name="contraseña" placeholder="Contraseña"> 
-              <small class="text-danger fst-italic">{{ $errors->first('contraseña') }}</small>
+              <div class="password-field-container">
+    <input type="password" id="contraseña" name="contraseña" placeholder="Contraseña">
+    <button type="button" id="togglePasswordLogin" class="password-toggle">Ver</button>
+</div>
+<small class="text-danger fst-italic">{{ $errors->first('contraseña') }}</small>
               <button type="submit" class="play-btn">Iniciar Sesión</button>
             </form>
         <p><a href="{{ route('rutaCrear') }}" class="create-account-link">¿No tienes cuenta?</a></p>
@@ -110,6 +114,29 @@
 </footer>
 
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const loginForm = document.getElementById('loginForm');
+        const loadingModal = document.getElementById('loadingModal');
 
+        if (loginForm) {
+            loginForm.addEventListener('submit', function(event) {
+                // Mostrar el modal de carga
+                loadingModal.style.display = 'flex';
+            });
+        }
+
+        const passwordInput = document.getElementById('contraseña');
+        const togglePasswordButton = document.getElementById('togglePasswordLogin');
+
+        if (togglePasswordButton) {
+            togglePasswordButton.addEventListener('click', function() {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                togglePasswordButton.textContent = type === 'password' ? 'Ver' : 'Ocultar';
+            });
+        }
+    });
+</script>
 </body>
 </html>

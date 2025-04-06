@@ -25,10 +25,23 @@ Route::prefix('news/news')->group(function () {
     Route::get('/posts/{post_id}/comments', [NewsController::class, 'getComments']);
     Route::put('/comments/{comment_id}', [NewsController::class, 'updateComment']);
     Route::delete('/comments/{comment_id}', [NewsController::class, 'deleteComment']);
-
+    
     // Endpoints para Likes/Dislikes
     Route::post('/posts/{post_id}/like', [NewsController::class, 'likePost']);
+    Route::delete('/posts/{post_id}/like', [NewsController::class, 'removeLikePost']);
     Route::post('/posts/{post_id}/dislike', [NewsController::class, 'dislikePost']);
+    Route::delete('/posts/{post_id}/dislike', [NewsController::class, 'removeDislikePost']);
+
+    // Endpoints para Comments Likes/Dislikes
     Route::post('/comments/{comment_id}/like', [NewsController::class, 'likeComment']);
+    Route::delete('/comments/{comment_id}/like', [NewsController::class, 'removeLikeComment']);
     Route::post('/comments/{comment_id}/dislike', [NewsController::class, 'dislikeComment']);
+    Route::delete('/comments/{comment_id}/dislike', [NewsController::class, 'removeDislikeComment']);
+
+    // Endpoints para obtener Likes/Dislikes
+    Route::get('/posts/{post_id}/likes', [NewsController::class, 'getPostLikes']);
+    Route::get('/posts/{post_id}/dislikes', [NewsController::class, 'getPostDislikes']);
 });
+
+Route::post('/news/news/posts/{post_id}/like', [NewsController::class, 'likePost']);
+Route::post('/news/news/posts/{post_id}/dislike', [NewsController::class, 'dislikePost']);
