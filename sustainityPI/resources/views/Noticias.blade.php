@@ -128,6 +128,34 @@
             width: 100%;
             margin-top: 5px;
         }
+
+        /* Modal para comentarios */
+        #commentsModal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            z-index: 1000;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            max-width: 600px;
+            width: 90%;
+            display: none;
+        }
+        #commentsModal h2 {
+            margin-top: 0;
+        }
+        #modalOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -143,11 +171,33 @@
         <a href="{{ route('rutaNosotros') }}">Nosotros</a>
     </nav>
     <div class="navbar-right auth-buttons">
-        @if (!session('logged_in'))
-            <button class="login-btn" onclick="window.location.href='{{ route('rutaLogin') }}'">Iniciar Sesión</button>
-        @endif
-        <button class="news-btn" onclick="window.location.href='{{ route('rutaNoticias') }}'">Noticias</button>
-    </div>
+    @if (session('logged_in'))
+        <div class="user-info">
+            <span class="username" onclick="toggleLogoutDropdown()">
+                {{ session('username') }}
+            </span>
+            <div id="logoutDropdown" class="logout-dropdown">
+                <button onclick="window.location.href='{{ route('rutaLogout') }}'">Cerrar sesión</button>
+            </div>
+        </div>
+    @else
+        <button class="login-btn" onclick="window.location.href='{{ route('rutaLogin') }}'">Iniciar Sesión</button>
+    @endif
+    <button class="news-btn" onclick="window.location.href='{{ route('rutaNoticias') }}'">Noticias</button>
+</div>
+<script>
+    function toggleLogoutDropdown() {
+        const dropdown = document.getElementById('logoutDropdown');
+        dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
+    }
+    // Opcional: ocultar el dropdown al hacer click fuera
+    document.addEventListener('click', function(e) {
+        const userInfo = document.querySelector('.user-info');
+        if(userInfo && !userInfo.contains(e.target)) {
+            document.getElementById('logoutDropdown').style.display = 'none';
+        }
+    });
+</script>
 </header>
 
 @if(session('success'))
@@ -159,7 +209,8 @@
 
 <div class="news-container">
     @foreach($news as $newsItem)
-        <div class="main-card appear-on-load">
+        <!-- Se agrega data-post-id para identificar el post -->
+        <div class="main-card appear-on-load" data-post-id="{{ $newsItem['id'] }}">
             <div class="text-content">
                 <h1 class="news-title">{{ $newsItem['title'] }}</h1>
                 <p class="news-description">{{ $newsItem['description'] }}</p>
@@ -198,6 +249,131 @@
     <p>&copy; 2024 Sustainity. Todos los derechos reservados.</p>
 </footer>
 
+<!-- Modal y overlay para comentarios -->
+<div id="modalOverlay"></div>
+<div id="commentsModal">
+    <h2>Comentarios</h2>
+    <div id="modalCommentsList"></div>
+    <textarea id="modalNewComment" placeholder="Escribe tu comentario" style="width:100%; height: 80px;"></textarea>
+    <button id="modalPostCommentBtn">Publicar comentario</button>
+    <button id="modalCloseBtn">Cerrar</button>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+    // Define la URL base de la API
+    const baseUrl = 'https://api-yovy.onrender.com';
+
+    // Manejo de Like
+    document.querySelectorAll('.like-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const card = this.closest('.main-card');
+            const postId = card.dataset.postId;
+            fetch(`${baseUrl}/news/news/posts/${postId}/like`, {
+                method: "POST"
+            })
+            .then(response => {
+                // Intenta parsear JSON y lanza error si no es JSON
+                return response.headers.get('content-type').includes('application/json') ?
+                    response.json() :
+                    Promise.reject("No se recibió JSON");
+            })
+            .then(data => {
+                this.querySelector('.like-count').textContent = data.likes;
+            })
+            .catch(err => console.error("Error en Like:", err));
+        });
+    });
+
+    // Manejo de Dislike
+    document.querySelectorAll('.dislike-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const card = this.closest('.main-card');
+            const postId = card.dataset.postId;
+            fetch(`${baseUrl}/news/news/posts/${postId}/dislike`, {
+                method: "POST"
+            })
+            .then(response => {
+                return response.headers.get('content-type').includes('application/json') ?
+                    response.json() :
+                    Promise.reject("No se recibió JSON");
+            })
+            .then(data => {
+                this.querySelector('.dislike-count').textContent = data.dislikes;
+            })
+            .catch(err => console.error("Error en Dislike:", err));
+        });
+    });
+
+    // Manejo para abrir el modal de comentarios
+    document.querySelectorAll('.toggle-comments-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const card = this.closest('.main-card');
+            const postId = card.dataset.postId;
+            openCommentsModal(postId);
+        });
+    });
+    
+    // Función para abrir el modal de comentarios
+    function openCommentsModal(postId) {
+        const modal = document.getElementById("commentsModal");
+        const overlay = document.getElementById("modalOverlay");
+        modal.style.display = "block";
+        overlay.style.display = "block";
+        modal.dataset.postId = postId;
+        loadComments(postId);
+    }
+    
+    // Función para cargar comentários
+    function loadComments(postId) {
+        fetch(`${baseUrl}/news/news/posts/${postId}/comments`)
+            .then(response => {
+                return response.headers.get('content-type').includes('application/json') ?
+                    response.json() :
+                    Promise.reject("No se recibió JSON");
+            })
+            .then(data => {
+                const commentsList = document.getElementById("modalCommentsList");
+                commentsList.innerHTML = "";
+                data.forEach(comment => {
+                    const commentDiv = document.createElement("div");
+                    commentDiv.textContent = comment.description + " - by user " + comment.user_id;
+                    commentsList.appendChild(commentDiv);
+                });
+            })
+            .catch(err => console.error("Error al cargar comentarios:", err));
+    }
+    
+    document.getElementById("modalPostCommentBtn").addEventListener("click", function() {
+        const modal = document.getElementById("commentsModal");
+        const postId = modal.dataset.postId;
+        const commentText = document.getElementById("modalNewComment").value;
+        fetch(`${baseUrl}/news/news/posts/${postId}/comments`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ description: commentText })
+        })
+        .then(response => {
+            return response.headers.get('content-type').includes('application/json') ?
+                response.json() :
+                Promise.reject("No se recibió JSON");
+        })
+        .then(data => {
+            loadComments(postId);
+            document.getElementById("modalNewComment").value = "";
+        })
+        .catch(err => console.error("Error al publicar comentario:", err));
+    });
+    
+    document.getElementById("modalCloseBtn").addEventListener("click", function() {
+        document.getElementById("commentsModal").style.display = "none";
+        document.getElementById("modalOverlay").style.display = "none";
+    });
+});
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
 </body>
 </html>

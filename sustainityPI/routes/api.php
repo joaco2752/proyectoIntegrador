@@ -1,6 +1,16 @@
 <?php
 // filepath: c:\laragon\www\proyectoIntegrador\sustainityPI\routes\api.php
+use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\NewsController;
+
+Route::prefix('usuarios')->group(function () {
+    // Endpoints para usuarios
+    Route::get('/', [UserController::class, 'leerUsuarios']);
+    Route::get('/{id}', [UserController::class, 'leerUsuario']);
+    Route::post('/', [UserController::class, 'agregarUsuario']);
+    Route::put('/{id}', [UserController::class, 'actualizarUsuario']);
+    Route::delete('/{id}', [UserController::class, 'eliminarUsuario']);
+});
 
 Route::prefix('news/news')->group(function () {
     // Endpoints para Posts

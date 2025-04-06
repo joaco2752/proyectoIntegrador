@@ -72,6 +72,7 @@ Route::get('/nosotros', [nosotrosController::class, 'index'])->name('enviarInfo'
 Route::get('/login/create', [loginController::class, 'create'])->name('rutaLogin');
 Route::post('/Login', [loginController::class, 'store'])->name('rutaLogin');
 Route::get('/Login', [loginController::class, 'index'])->name('rutaLog');
+Route::get('/logout', [loginController::class, 'logout'])->name('rutaLogout');
 
 Route::get('/Consultar', [consultarController::class, 'index'])->name('rutaConsultar');
 Route::get('/Consultar/{id}/edit',[consultarController::class,'edit'])->name('rutaFormConsulta');

@@ -7,6 +7,54 @@ body {
     color: #fff;
 }
 
+.user-info:hover .logout-menu {
+    display: block;
+}
+.user-info {
+    position: relative;
+    display: inline-block;
+    margin-right: 20px; /* separa del botón Noticias */
+    vertical-align: middle;
+    margin-top: 6px
+}
+
+.username {
+    cursor: pointer;
+    padding: 15px;
+    font-size: 1.2em;
+    color: #fff; /* o el color que uses en el navbar */
+}
+
+/* Dropdown flotante para cerrar sesión */
+.logout-dropdown {
+    position: absolute;
+    top: 120%; /* se muestra debajo del nombre */
+    right: 0;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    display: none;
+    z-index: 1000;
+}
+
+.logout-dropdown button {
+    background-color: red;
+    color: #fff;
+    font-family: 'Press Start 2P', cursive;
+    padding: 8px 15px;
+    font-size: 0.7em; /* Reducimos el tamaño de la fuente */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    white-space: nowrap; /* Evita que el texto se divida en múltiples líneas */
+    min-width: fit-content; /* Asegura que el botón se ajuste al contenido */
+}
+
+.logout-dropdown button:hover {
+    background-color: darkred;
+}
 .navbar {
     display: flex;
     justify-content: space-between;

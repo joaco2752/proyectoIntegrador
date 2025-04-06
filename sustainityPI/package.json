@@ -17,6 +17,7 @@
     "dependencies": {
         "@popperjs/core": "^2.11.8",
         "bootstrap": "^5.3.3",
+        "caniuse-lite": "^1.0.30001712",
         "stripe": "^17.7.0"
     }
 }

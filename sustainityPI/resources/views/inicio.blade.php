@@ -53,12 +53,33 @@
             <a href="{{ route('rutaConsultar') }}">Consultar</a>
         </nav>
         <div class="navbar-right auth-buttons">
-            @if (!session('logged_in'))
-                <button class="login-btn" onclick="window.location.href='{{ route('rutaLogin') }}'">Iniciar Sesión</button>
-                
-            @endif
-            <button class="news-btn" onclick="window.location.href='{{ route('rutaNoticias') }}'">Noticias</button>
+    @if (session('logged_in'))
+        <div class="user-info">
+            <span class="username" onclick="toggleLogoutDropdown()">
+                {{ session('username') }}
+            </span>
+            <div id="logoutDropdown" class="logout-dropdown">
+                <button onclick="window.location.href='{{ route('rutaLogout') }}'">Cerrar sesión</button>
+            </div>
         </div>
+    @else
+        <button class="login-btn" onclick="window.location.href='{{ route('rutaLogin') }}'">Iniciar Sesión</button>
+    @endif
+    <button class="news-btn" onclick="window.location.href='{{ route('rutaNoticias') }}'">Noticias</button>
+</div>
+<script>
+    function toggleLogoutDropdown() {
+        const dropdown = document.getElementById('logoutDropdown');
+        dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
+    }
+    // Opcional: ocultar el dropdown al hacer click fuera
+    document.addEventListener('click', function(e) {
+        const userInfo = document.querySelector('.user-info');
+        if(userInfo && !userInfo.contains(e.target)) {
+            document.getElementById('logoutDropdown').style.display = 'none';
+        }
+    });
+</script>
     </header>
 
     <div class="main-card appear-on-load">

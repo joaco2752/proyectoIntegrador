@@ -17,9 +17,9 @@
         </a>
     </div>
     <nav class="navbar-center nav-links">
-    <a href="{{ route('rutaInicio') }}">Inicio</a>
+        <a href="{{ route('rutaInicio') }}">Inicio</a>
         <a href="/donar">Donativos</a>
-        <a href="{{ route('rutaNosotros')}}">Nosotros</a>
+        <a href="{{ route('rutaNosotros') }}">Nosotros</a>
     </nav>
     <div class="navbar-right auth-buttons">
         <button class="login-btn" onclick="window.location.href='{{ route('rutaLogin') }}'">Iniciar Sesión</button>
@@ -27,213 +27,124 @@
     </div>
 </header>
 
-    @if (session('message'))
-<div id="alerta_tiempo" class="alert" style="width: 100%; padding: 15px 0; position: fixed; top: 80px; left: 0; z-index: 1000;">
+@if (session('message'))
+    <div id="alerta_tiempo" class="alert" style="width: 100%; padding: 15px 0; position: fixed; top: 80px; left: 0; z-index: 1000;">
         {{ session('message') }}
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const alertMessage = document.getElementById("alerta_tiempo");
-        if (alertMessage) {
-            setTimeout(() => {
-                alertMessage.style.display = "none";
-            }, 5000); 
-        }
-    });
-</script>
-
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const alertMessage = document.getElementById("alerta_tiempo");
+                if (alertMessage) {
+                    setTimeout(() => {
+                        alertMessage.style.display = "none";
+                    }, 5000); 
+                }
+            });
+        </script>
     </div>
 @endif
 
-    <div class="main-card">
-        <div class="text-content">
-            <h1>Crea tu Cuenta</h1>
-            <form action="/CrearCuenta" method="POST" class="donation-form">
-                @csrf
-                <div class="password-field-container">
-                <label for="correo">Correo Electrónico</label>
-                    <input type="text" id="email" name="email" placeholder="" value="{{ old('email') }}">
-                    <small class="text-danger fst-italic">{{ $errors->first('email') }}</small>
-                </div>
-
-                <label for="contraseña">Contraseña</label>
-                <div class="password-field-container">
-                    <input type="password" id="contraseña" name="contraseña" placeholder="">
-                    <button type="button" id="togglePassword" class="password-toggle">Ver</button>
-                </div>
-                <small class="text-danger fst-italic">{{ $errors->first('contraseña') }}</small>
-                
-                <div id="passwordStrengthMeter" class="password-strength-meter">
-                    <div id="passwordStrengthBar" class="password-strength-meter-bar"></div>
-                </div>
-                <div id="passwordFeedback" class="password-feedback"></div>
-
-                <label for="confirmar_contraseña">Confirmar Contraseña</label>
-                <div class="password-field-container">
-                    <input type="password" id="confirmar_contraseña" name="confirmar_contraseña" placeholder="">
-                    <button type="button" id="toggleConfirmPassword" class="password-toggle">Ver</button>
-                </div>
-                <small class="text-danger fst-italic">{{ $errors->first('confirmar_contraseña') }}</small>
-                <div id="passwordMatchFeedback" class="password-match-feedback"></div>
-                
-                <button type="submit" class="play-btn" name="btnDonar">Crear Cuenta</button>
-            </form>
-            <p><a href="{{ route('rutaLogin') }}" class="Login-link">¿Ya tienes cuenta?</a></p>
-        </div>
+<div class="main-card">
+    <div class="text-content">
+        <h1>Crea tu Cuenta</h1>
+        <form id="registerForm" method="POST">
+            @csrf
+            <div class="password-field-container">
+                <label for="email">Correo Electrónico</label>
+                <input type="text" id="email" name="email" placeholder="Correo Electrónico" value="{{ old('email') }}">
+                <small class="text-danger fst-italic">{{ $errors->first('email') }}</small>
+            </div>
+            <div class="password-field-container">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Username" value="{{ old('username') }}">
+                <small class="text-danger fst-italic">{{ $errors->first('username') }}</small>
+            </div>
+            <label for="contraseña">Contraseña</label>
+            <div class="password-field-container">
+                <input type="password" id="contraseña" name="contraseña" placeholder="Contraseña">
+                <button type="button" id="togglePassword" class="password-toggle">Ver</button>
+            </div>
+            <small class="text-danger fst-italic">{{ $errors->first('contraseña') }}</small>
+            
+            <label for="confirmar_contraseña">Confirmar Contraseña</label>
+            <div class="password-field-container">
+                <input type="password" id="confirmar_contraseña" name="confirmar_contraseña" placeholder="Confirmar Contraseña">
+                <button type="button" id="toggleConfirmPassword" class="password-toggle">Ver</button>
+            </div>
+            <small class="text-danger fst-italic">{{ $errors->first('confirmar_contraseña') }}</small>
+            
+            <button type="submit" class="play-btn">Crear Cuenta</button>
+        </form>
+        <p><a href="{{ route('rutaLogin') }}" class="Login-link">¿Ya tienes cuenta?</a></p>
     </div>
+</div>
 
-    <footer class="footer">
-        <div class="footer-content">
-            <a href="#">Política de Privacidad</a> | 
-            <a href="#">Términos y Condiciones</a> | 
-            <a href="#">Contacto</a>
-        </div>
-        <p>&copy; 2024 Sustainity. Todos los derechos reservados.</p>
-    </footer>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const passwordInput = document.getElementById('contraseña');
-            const confirmPasswordInput = document.getElementById('confirmar_contraseña');
-            const passwordStrengthMeter = document.getElementById('passwordStrengthMeter');
-            const passwordStrengthBar = document.getElementById('passwordStrengthBar');
-            const passwordFeedback = document.getElementById('passwordFeedback');
-            const passwordMatchFeedback = document.getElementById('passwordMatchFeedback');
-            const togglePasswordButton = document.getElementById('togglePassword');
-            const toggleConfirmPasswordButton = document.getElementById('toggleConfirmPassword');
-            
-            // Show/hide password toggle for password field
-            togglePasswordButton.addEventListener('click', function() {
-                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-                passwordInput.setAttribute('type', type);
-                togglePasswordButton.textContent = type === 'password' ? 'Ver' : 'Ocultar';
-            });
-            
-            // Show/hide password toggle for confirm password field
-            toggleConfirmPasswordButton.addEventListener('click', function() {
-                const type = confirmPasswordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-                confirmPasswordInput.setAttribute('type', type);
-                toggleConfirmPasswordButton.textContent = type === 'password' ? 'Ver' : 'Ocultar';
-            });
-            
-            // Password strength checker
-            passwordInput.addEventListener('input', function() {
-                const password = passwordInput.value;
-                
-                if (password.length === 0) {
-                    passwordStrengthMeter.style.display = 'none';
-                    passwordFeedback.style.display = 'none';
-                    return;
-                }
-                
-                passwordStrengthMeter.style.display = 'block';
-                passwordFeedback.style.display = 'block';
-                
-                // Check password strength
-                const strength = checkPasswordStrength(password);
-                
-                // Update strength meter
-                passwordStrengthBar.className = 'password-strength-meter-bar';
-                
-                if (strength.score === 1) {
-                    passwordStrengthBar.classList.add('strength-weak');
-                    passwordFeedback.textContent = 'Contraseña débil: ' + strength.feedback;
-                } else if (strength.score === 2) {
-                    passwordStrengthBar.classList.add('strength-medium');
-                    passwordFeedback.textContent = 'Contraseña media: ' + strength.feedback;
-                } else if (strength.score === 3) {
-                    passwordStrengthBar.classList.add('strength-good');
-                    passwordFeedback.textContent = 'Contraseña buena: ' + strength.feedback;
-                } else if (strength.score === 4) {
-                    passwordStrengthBar.classList.add('strength-strong');
-                    passwordFeedback.textContent = 'Contraseña fuerte: ' + strength.feedback;
-                }
-                
-                // Check if passwords match
-                checkPasswordsMatch();
-            });
-            
-            // Check if passwords match
-            confirmPasswordInput.addEventListener('input', checkPasswordsMatch);
-            
-            function checkPasswordsMatch() {
-                const password = passwordInput.value;
-                const confirmPassword = confirmPasswordInput.value;
-                
-                if (confirmPassword.length === 0) {
-                    passwordMatchFeedback.style.display = 'none';
-                    return;
-                }
-                
-                passwordMatchFeedback.style.display = 'block';
-                
-                if (password === confirmPassword) {
-                    passwordMatchFeedback.textContent = '¡Las contraseñas coinciden!';
-                    passwordMatchFeedback.className = 'password-match-feedback password-match-success';
-                } else {
-                    passwordMatchFeedback.textContent = 'Las contraseñas no coinciden';
-                    passwordMatchFeedback.className = 'password-match-feedback password-match-error';
-                }
-            }
-            
-            function checkPasswordStrength(password) {
-                let score = 0;
-                let feedback = [];
-                
-                // Check length
-                if (password.length < 8) {
-                    feedback.push('Añade más caracteres (mínimo 8)');
-                } else {
-                    score++;
-                }
-                
-                // Check for uppercase letters
-                if (!/[A-Z]/.test(password)) {
-                    feedback.push('Añade letras mayúsculas');
-                } else {
-                    score++;
-                }
-                
-                // Check for lowercase letters
-                if (!/[a-z]/.test(password)) {
-                    feedback.push('Añade letras minúsculas');
-                } else {
-                    score++;
-                }
-                
-                // Check for numbers
-                if (!/[0-9]/.test(password)) {
-                    feedback.push('Añade números');
-                } else {
-                    score++;
-                }
-                
-                // Check for special characters
-                if (!/[^A-Za-z0-9]/.test(password)) {
-                    feedback.push('Añade caracteres especiales (!@#$%^&*)');
-                } else {
-                    score++;
-                }
-                
-                // Adjust score based on length
-                if (password.length >= 12) {
-                    score = Math.min(score + 1, 4);
-                }
-                
-                // Generate feedback message
-                let feedbackMessage = '';
-                if (score < 4) {
-                    feedbackMessage = feedback.slice(0, 2).join(', ');
-                } else {
-                    feedbackMessage = '¡Excelente contraseña!';
-                }
-                
-                return {
-                    score: Math.min(score, 4),
-                    feedback: feedbackMessage
-                };
-            }
+<footer class="footer">
+    <div class="footer-content">
+        <a href="#">Política de Privacidad</a> | 
+        <a href="#">Términos y Condiciones</a> | 
+        <a href="#">Contacto</a>
+    </div>
+    <p>&copy; 2024 Sustainity. Todos los derechos reservados.</p>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const passwordInput = document.getElementById('contraseña');
+        const confirmPasswordInput = document.getElementById('confirmar_contraseña');
+        const togglePasswordButton = document.getElementById('togglePassword');
+        const toggleConfirmPasswordButton = document.getElementById('toggleConfirmPassword');
+        
+        togglePasswordButton.addEventListener('click', function() {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            togglePasswordButton.textContent = type === 'password' ? 'Ver' : 'Ocultar';
         });
-    </script>
+        
+        toggleConfirmPasswordButton.addEventListener('click', function() {
+            const type = confirmPasswordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            confirmPasswordInput.setAttribute('type', type);
+            toggleConfirmPasswordButton.textContent = type === 'password' ? 'Ver' : 'Ocultar';
+        });
+    });
+
+    // Envío del formulario a la API externa para crear cuenta sin notificaciones
+    document.getElementById('registerForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        const formData = new FormData(this);
+        const password = formData.get('contraseña');
+        const confirmPassword = formData.get('confirmar_contraseña');
+
+        if(password !== confirmPassword) {
+            return;
+        }
+
+        const userData = {
+            username: formData.get('username'),
+            email: formData.get('email'),
+            password: password,
+            role_id: 2
+        };
+
+        fetch('https://api-yovy.onrender.com/usuarios', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(userData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Si se creó el usuario correctamente, se redirecciona al login.
+            if (data.message === "Usuario Guardado" || data.id) {
+                window.location.href = '/login/create';
+            } else {
+                window.location.href = '/login/create';
+            }
+        })
+        .catch(error => {
+            window.location.href = '/login/create';
+        });
+    });
+</script>
+
 </body>
 </html>

@@ -1,5 +1,5 @@
 <?php
-// filepath: c:\laragon\www\proyectoIntegrador\sustainityPI\app\Http\Controllers\Api\NewsController.php
+
 
 namespace App\Http\Controllers\Api;
 
@@ -16,7 +16,6 @@ class NewsController extends Controller
         $this->fastApi = $fastApi;
     }
 
-    // Método para renderizar la vista de Noticias
     public function index()
     {
         // Obtiene los posts de FastAPI (ajusta el endpoint según la API)

@@ -11,7 +11,7 @@ class FastApiService
 
     public function __construct()
     {
-        $this->baseUri = env('FASTAPI_URL', 'https://api-yovy.onrender.com'); // URL de FastAPI
+        $this->baseUri = env('FASTAPI_URL', 'https://api-yovy.onrender.com'); 
         $this->client = new Client([
             'base_uri' => $this->baseUri,
             'headers' => [
