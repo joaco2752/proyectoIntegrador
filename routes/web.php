@@ -20,7 +20,7 @@ Route::get('/', function () {
 // Página de donación (vista simple)
 Route::get('/donar', function () {
     return view('donativos');
-})->name('rutaDonativos.form');
+})->name('rutaDonativos');
 
 // Página de información "nosotros"
 Route::get('/info', function () {
@@ -41,47 +41,40 @@ Route::get('/demo', function () {
 })->name('rutaDemoDesarrollo');
 
 /* Rutas para donativoController */
-// Muestra formulario de creación
-Route::get('/donativos/create', [donativoController::class, 'create'])->name('rutaDonativos.create');
-// Guarda donativo
-Route::post('/donativos', [donativoController::class, 'store'])->name('rutaDonativos.store');
-// Lista donativos
-Route::get('/donativos', [donativoController::class, 'index'])->name('rutaDonativos.index');
+Route::get('/donativos/create', [donativoController::class, 'create'])->name('rutaDonativos');
+Route::post('/donativos', [donativoController::class, 'store'])->name('rutaDonar');
+Route::get('/donativos', [donativoController::class, 'index'])->name('enviarDonativo');
 
-// Rutas para crear cuenta
-Route::get('/crear_cuenta/create', [crearcuentaController::class, 'create'])->name('rutaCrear.create');
-Route::post('/CrearCuenta', [crearcuentaController::class, 'store'])->name('rutaCrear.store');
-Route::get('/CrearCuenta', [crearcuentaController::class, 'index'])->name('rutaCrear.index');
+/* Rutas para crear cuenta */
+Route::get('/crear_cuenta/create', [crearcuentaController::class, 'create'])->name('rutaCrear');
+Route::post('/CrearCuenta', [crearcuentaController::class, 'store'])->name('rutaCrearCuenta');
+Route::get('/CrearCuenta', [crearcuentaController::class, 'index'])->name('rutaCrear');
 
-// Rutas para nosotros (información)
-Route::get('/nosotros/create', [nosotrosController::class, 'create'])->name('rutaInfo.create');
-Route::post('/nosotros/create', [nosotrosController::class, 'store'])->name('rutaInfo.store');
-Route::get('/nosotros', [nosotrosController::class, 'index'])->name('rutaInfo.index');
+/* Rutas para nosotros */
+Route::get('/nosotros/create', [nosotrosController::class, 'create'])->name('rutaInfo');
+Route::post('/nosotros/create', [nosotrosController::class, 'store'])->name('rutaInfoStore');
+Route::get('/nosotros', [nosotrosController::class, 'index'])->name('enviarInfo');
 
-// Rutas para login
-Route::get('/login/create', [loginController::class, 'create'])->name('rutaLogin.create');
-Route::post('/Login', [loginController::class, 'store'])->name('rutaLogin.store');
-Route::get('/Login', [loginController::class, 'index'])->name('rutaLogin.index');
+/* Rutas para login */
+Route::get('/login/create', [loginController::class, 'create'])->name('rutaLogin');
+Route::post('/Login', [loginController::class, 'store'])->name('rutaLoginStore');
+Route::get('/Login', [loginController::class, 'index'])->name('rutaLog');
 Route::get('/logout', [loginController::class, 'logout'])->name('rutaLogout');
 
-// Rutas para consultas
-Route::get('/Consultar', [consultarController::class, 'index'])->name('rutaConsultar.index');
-Route::get('/Consultar/{id}/edit',[consultarController::class, 'edit'])->name('rutaConsultar.edit');
-Route::put('/Consultar/{id}', [consultarController::class, 'update'])->name('rutaConsultar.update');
-Route::delete('/Consultar/{id}', [consultarController::class, 'destroy'])->name('rutaConsultar.destroy');
+/* Rutas para consultas */
+Route::get('/Consultar', [consultarController::class, 'index'])->name('rutaConsultar');
+Route::get('/Consultar/{id}/edit', [consultarController::class, 'edit'])->name('rutaFormConsulta');
+Route::put('/Consultar/{id}', [consultarController::class, 'update'])->name('rutaActualizar');
+Route::delete('/Consultar/{id}', [consultarController::class, 'destroy'])->name('rutaEliminar');
 
-// Ruta para componentes
-Route::view('/component', 'componentes')->name('rutaComponent');
+/* Ruta para componentes */
+Route::view('/component', 'componentes')->name('rutacomponent');
 
-// Rutas para Stripe (donación)
-// Ruta para mostrar el formulario de donación (puede ser la misma vista de /donar, si se requiere)
-Route::get('/donar', function () {
-    return view('donativos');
-})->name('rutaDonativos.form2');
-
+/* Stripe */
 // Ruta para manejar el pago con Stripe
 Route::post('/checkout', function (Request $request) {
     Stripe::setApiKey(env('STRIPE_SECRET'));
+
     $session = Session::create([
         'payment_method_types' => ['card'],
         'mode' => 'payment',
@@ -98,6 +91,7 @@ Route::post('/checkout', function (Request $request) {
         'success_url' => url('/gracias'),
         'cancel_url' => url('/cancelado'),
     ]);
+
     return redirect($session->url);
 })->name('rutaCheckout');
 
