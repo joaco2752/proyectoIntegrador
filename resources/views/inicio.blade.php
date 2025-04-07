@@ -50,7 +50,7 @@
             <a id="inicio" id href="{{ route('rutaInicio') }}">Inicio</a>
             <a href="/donar">Donativos</a>
             <a href="/info">Nosotros</a>
-            <a href="{{ route('rutaConsultar') }}">Consultar</a>
+            
         </nav>
         <div class="navbar-right auth-buttons">
     @if (session('logged_in'))
