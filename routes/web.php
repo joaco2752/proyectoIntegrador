@@ -20,7 +20,7 @@ Route::get('/', function () {
 // Página de donación (vista simple)
 Route::get('/donar', function () {
     return view('donativos');
-})->name('rutaDonativos');
+})->name('rutaDonativos.form');
 
 // Página de información "nosotros"
 Route::get('/info', function () {
@@ -41,8 +41,11 @@ Route::get('/demo', function () {
 })->name('rutaDemoDesarrollo');
 
 /* Rutas para donativoController */
-Route::get('/donativos/create', [donativoController::class, 'create'])->name('rutaDonativos');
+// Ruta para mostrar el formulario de creación de donativo
+Route::get('/donativos/create', [donativoController::class, 'create'])->name('rutaDonativos.create');
+// Ruta para guardar donativo
 Route::post('/donativos', [donativoController::class, 'store'])->name('rutaDonar');
+// Ruta para listar donativos
 Route::get('/donativos', [donativoController::class, 'index'])->name('enviarDonativo');
 
 /* Rutas para crear cuenta */
