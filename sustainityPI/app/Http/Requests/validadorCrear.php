@@ -22,10 +22,10 @@ class validadorCrear extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => 'required|email|unique:usuarios,email',
-            'username' => 'required|unique:usuarios,username',
-            'contraseña' => 'required|min:8',
-            'confirmar_contraseña' => 'required|same:contraseña',
+            'email' => 'required|email|unique:tbUsers,email',
+            'username' => 'required|unique:tbUsers,username',
+            'password' => 'required|min:8',
+            'confirmar_password' => 'required|same:password',
         ];
     }
 }

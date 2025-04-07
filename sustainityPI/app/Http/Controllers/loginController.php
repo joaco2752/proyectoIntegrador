@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\validadorLogin;
 
 class loginController extends Controller
@@ -43,10 +44,8 @@ class loginController extends Controller
      */
     public function index()
     {
-        // Si es necesario, muestra las cuentas (este método lo usabas para debug)
-        // pero normalmente no es requerido en el flujo de autenticación.
-        // Puedes eliminarlo si no lo usas.
-        $consultaCuentas = \DB::table('usuarios')->get();
+        // Cambiar de 'usuarios' a 'tbUsers'
+        $consultaCuentas = DB::table('tbUsers')->get();
         return view('login', compact('consultaCuentas'));
     }
 

@@ -14,7 +14,8 @@ class crearcuentaController extends Controller
      */
     public function index()
     {
-        $consultaCuentas = DB::table('usuarios')->get();
+        // Cambiar de 'usuarios' a 'tbUsers'
+        $consultaCuentas = DB::table('tbUsers')->get();
         return view('CrearCuenta', compact('consultaCuentas'));
     }
 
@@ -32,13 +33,15 @@ class crearcuentaController extends Controller
     public function store(validadorCrear $request)
     {
         $request->validate([
-            'email' => 'required|email|unique:usuarios,email', // Asegúrate de usar el nombre correcto de la tabla
-            'username' => 'required|unique:usuarios,username',
+            'email' => 'required|email|unique:tbUsers,email',
+            'username' => 'required|unique:tbUsers,username',
         ]);
 
-        DB::table('usuarios')->insert([
+        DB::table('tbUsers')->insert([
+            "username" => $request->input('username'),
             "email" => $request->input('email'),
-            "contraseña" => bcrypt($request->input('contraseña')),
+            "password" => bcrypt($request->input('password')),
+            "role_id" => 2,
             "created_at" => Carbon::now(),
             "updated_at" => Carbon::now()
         ]);

@@ -123,3 +123,13 @@ Route::get('/gracias', function () {
 Route::get('/cancelado', function () {
     return view('cancelado'); // Vista de cancelación
 })->name('rutaCancelado');
+
+Route::get('/test-db', function () {
+    try {
+        DB::connection()->getPdo();
+        $results = DB::select('SHOW TABLES');
+        dd($results);
+    } catch (\Exception $e) {
+        dd("Error de conexión: " . $e->getMessage());
+    }
+});

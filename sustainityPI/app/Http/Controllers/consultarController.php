@@ -14,7 +14,8 @@ class consultarController extends Controller
      */
     public function index()
     {
-        $consultaCuentas = DB::table('usuarios')->get();
+        // Cambiar de 'usuarios' a 'tbUsers'
+        $consultaCuentas = DB::table('tbUsers')->get();
         return view('Consultar', compact('consultaCuentas'));
     }
 
@@ -47,9 +48,10 @@ class consultarController extends Controller
      */
     public function edit(string $id)
     {
-        $usuario = DB::table('usuarios')->where('id', $id)->first();
+        // Cambiar de 'usuarios' a 'tbUsers'
+        $usuario = DB::table('tbUsers')->where('id', $id)->first();
         if (!$usuario) {
-            return redirect()->route('rutaConsultar')->with('error', 'Usuario no encontrado');
+            return redirect()->route('rutaConsultar');
         }
         return view('FormularioActualizar', compact('usuario'));
     }
