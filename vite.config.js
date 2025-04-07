@@ -5,10 +5,19 @@ export default defineConfig({
     plugins: [
         laravel({
             input: [
+                // CSS
                 'resources/css/app.css',
-                'resources/js/app.js',
+                'resources/css/donativos.css',
                 'resources/css/inicio.css',
-                'resources/js/script.js' // Agregado
+                'resources/css/login.css',
+                'resources/css/nosotros.css',
+                'resources/css/noticias.css',
+                
+                // JS
+                'resources/js/app.js',
+                'resources/js/bootstrap.js',
+                'resources/js/script.js',
+                'resources/js/scripts.js',
             ],
             refresh: true,
         }),
