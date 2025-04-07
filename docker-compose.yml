@@ -1,4 +1,4 @@
-version: '3.8'
+
 
 services:
   app:
@@ -13,6 +13,9 @@ services:
       - ./:/var/www
     networks:
       - laravel-network
+    # Define un comando de arranque si lo prefieres, por ejemplo:
+    # command: php artisan serve --host=0.0.0.0 --port=9000
+    # Nota: Si usas Nginx para servir, no necesitas que Laravel use el servidor integrado.
 
   webserver:
     image: nginx:alpine
