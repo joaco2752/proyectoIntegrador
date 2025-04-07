@@ -29,7 +29,7 @@ COPY . .
 RUN chown -R www-data:www-data /var/www
 
 # Expone el puerto de php-fpm
-EXPOSE 9000
+EXPOSE 80
 
 # Comando para arrancar php-fpm
 CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=80"]
