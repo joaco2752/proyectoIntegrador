@@ -68,7 +68,7 @@
     <div class="main-card">
         <div class="text-content">
             <h1>Apoya Sustainity</h1>
-            <p>Ayúdanos a hacer un mundo mejor, un juego a la vez</p>
+            <p>Ayudanos a hacer un mundo mejor, un juego a la vez</p>
             
             <form action="{{ route('rutaCheckout') }}" method="POST" class="donation-form">
                 @csrf
