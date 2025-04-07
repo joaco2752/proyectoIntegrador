@@ -1,4 +1,3 @@
-
 # Dockerfile
 FROM php:8.2-fpm
 
@@ -29,8 +28,8 @@ COPY . .
 # Ajusta permisos en storage y bootstrap/cache
 RUN chown -R www-data:www-data /var/www
 
-# Expone el puerto en el que corre php-fpm
+# Expone el puerto de php-fpm
 EXPOSE 9000
 
 # Comando para arrancar php-fpm
-CMD ["php-fpm"]
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=80"]
