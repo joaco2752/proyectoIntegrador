@@ -41,17 +41,20 @@ Route::get('/demo', function () {
 })->name('rutaDemoDesarrollo');
 
 /* Rutas para donativoController */
-// Ruta para mostrar el formulario de creación de donativo
+// Mostrar formulario de creación de donativo
 Route::get('/donativos/create', [donativoController::class, 'create'])->name('rutaDonativos.create');
-// Ruta para guardar donativo
+// Guardar donativo
 Route::post('/donativos', [donativoController::class, 'store'])->name('rutaDonar');
-// Ruta para listar donativos
+// Listar donativos
 Route::get('/donativos', [donativoController::class, 'index'])->name('enviarDonativo');
 
 /* Rutas para crear cuenta */
-Route::get('/crear_cuenta/create', [crearcuentaController::class, 'create'])->name('rutaCrear');
-Route::post('/CrearCuenta', [crearcuentaController::class, 'store'])->name('rutaCrearCuenta');
+// Define las rutas de crear cuenta con nombres únicos
+/* Rutas para crear cuenta */
+Route::get('/crear_cuenta/create', [crearcuentaController::class, 'create'])->name('rutaCrear.create');
+Route::post('/CrearCuenta', [crearcuentaController::class, 'store'])->name('rutaCrear.store');
 Route::get('/CrearCuenta', [crearcuentaController::class, 'index'])->name('rutaCrear');
+
 
 /* Rutas para nosotros */
 Route::get('/nosotros/create', [nosotrosController::class, 'create'])->name('rutaInfo');
