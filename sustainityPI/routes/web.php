@@ -10,6 +10,12 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Stripe\Stripe;
 use Stripe\Checkout\Session;
+use App\Http\Controllers\SentimentController;
+
+
+
+Route::get('/sentimiento', [SentimentController::class, 'index']);
+
 
 
 

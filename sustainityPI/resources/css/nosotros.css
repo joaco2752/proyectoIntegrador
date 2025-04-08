@@ -239,6 +239,34 @@ input[type="text"]:focus {
     color: #ff5722;
 }
 
+.global-evaluation {
+    background-color: #0d0d0d; /* Fondo oscuro */
+    border-left: 5px solid #4CAF50; /* Borde lateral verde */
+    color: #ffffff; /* Texto blanco */
+    padding: 20px;
+    margin-top: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.global-evaluation h3 {
+    color: #ffcb05; /* Amarillo para el título */
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+.global-evaluation p {
+    color: #e0e0e0; /* Gris claro para mejor legibilidad */
+    line-height: 1.6;
+    font-size: 0.9em;
+}
+
+.global-evaluation:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    transform: translateY(-2px);
+}
+
 @keyframes fadeIn {
     0% { opacity: 0; }
     100% { opacity: 1; }
